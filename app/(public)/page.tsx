@@ -101,10 +101,20 @@ export default function LandingPage() {
             </Link>
           </div>
           <div className="mt-8 grid gap-4 text-sm text-slate-600 sm:grid-cols-2">
-            <div>✅ SOC-ready audit trails and approvals.</div>
-            <div>✅ Multi-tenant data isolation with Supabase RLS.</div>
-            <div>✅ Real-time dashboards with exports and alerts.</div>
-            <div>✅ Automated exception alerts and variance detection.</div>
+            {[
+              "SOC-ready audit trails and approvals.",
+              "Multi-tenant data isolation with Supabase RLS.",
+              "Real-time dashboards with exports and alerts.",
+              "Automated exception alerts and variance detection.",
+            ].map((item) => (
+              <div key={item} className="flex items-start gap-2">
+                <i
+                  className="fa-solid fa-circle-check mt-0.5 text-emerald-500"
+                  aria-hidden="true"
+                />
+                <span>{item}</span>
+              </div>
+            ))}
           </div>
         </div>
         <Card className="space-y-6 border border-slate-200 bg-white">
