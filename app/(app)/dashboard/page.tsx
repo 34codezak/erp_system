@@ -7,6 +7,16 @@ const metrics = [
   { label: "Open liabilities", value: "$198K", change: "+0.9%" }
 ];
 
+const realtimeFeeds = [
+  { title: "Sales pipeline", detail: "Live CRM sync every 2 min", status: "Streaming" },
+  { title: "Operations health", detail: "IoT & ERP signals", status: "Up to date" },
+  { title: "Cash position", detail: "Bank + AP/AR ledger", status: "Streaming" }
+];
+
+const kpiTracking = [
+  { label: "On-time delivery", value: "96.2%", target: "Target 95%" },
+  { label: "Days cash on hand", value: "72 days", target: "Target 60 days" },
+  { label: "Revenue per head", value: "$18.4K", target: "Target $17K" }
 const focusAreas = [
   {
     title: "Finance & accounting",
@@ -65,6 +75,18 @@ export default function DashboardPage() {
           </Card>
         ))}
       </div>
+      <div className="grid gap-4 lg:grid-cols-[1.4fr_1fr]">
+        <Card>
+          <h2 className="text-lg font-semibold">Real-time data dashboards</h2>
+          <p className="mt-2 text-sm text-slate-600">
+            Streamed KPIs refresh continuously from finance, HR, and operations.
+          </p>
+          <div className="mt-4 grid gap-3 sm:grid-cols-3">
+            {realtimeFeeds.map((feed) => (
+              <div key={feed.title} className="rounded-lg border border-slate-200 p-3">
+                <p className="text-sm font-semibold">{feed.title}</p>
+                <p className="mt-1 text-xs text-slate-500">{feed.detail}</p>
+                <p className="mt-3 text-xs font-medium text-emerald-600">{feed.status}</p>
       <div className="grid gap-4 lg:grid-cols-[1.2fr_0.8fr]">
         <Card>
           <h2 className="text-lg font-semibold">Operational focus</h2>
@@ -87,6 +109,18 @@ export default function DashboardPage() {
           </div>
         </Card>
         <Card>
+          <h2 className="text-lg font-semibold">KPI tracking</h2>
+          <p className="mt-2 text-sm text-slate-600">
+            Track targets in real time with automated alerts on variance.
+          </p>
+          <div className="mt-4 space-y-3">
+            {kpiTracking.map((kpi) => (
+              <div key={kpi.label} className="rounded-lg border border-slate-200 p-3">
+                <div className="flex items-center justify-between">
+                  <p className="text-sm font-semibold">{kpi.label}</p>
+                  <p className="text-sm text-slate-700">{kpi.value}</p>
+                </div>
+                <p className="mt-1 text-xs text-slate-500">{kpi.target}</p>
           <h2 className="text-lg font-semibold">Activity feed</h2>
           <p className="mt-1 text-sm text-slate-600">
             Recent updates from every module.
@@ -101,6 +135,26 @@ export default function DashboardPage() {
           </div>
         </Card>
       </div>
+      <Card>
+        <h2 className="text-lg font-semibold">Operational alerts</h2>
+        <ul className="mt-3 space-y-2 text-sm text-slate-600">
+          <li>• 4 payroll approvals pending.</li>
+          <li>• Inventory reorder threshold hit for 2 SKUs.</li>
+          <li>• 1 supplier invoice awaiting review.</li>
+        </ul>
+      </Card>
+      <Card>
+        <h2 className="text-lg font-semibold">Automation triggers</h2>
+        <p className="mt-2 text-sm text-slate-600">
+          Workflow automations dispatch approvals, anomaly investigations, and BI
+          dashboards when KPIs drift outside thresholds.
+        </p>
+        <ul className="mt-3 space-y-2 text-sm text-slate-600">
+          <li>• Auto-route budget exceptions to finance leads.</li>
+          <li>• Schedule quarterly board dashboards upon close.</li>
+          <li>• Escalate supplier risk alerts to procurement.</li>
+        </ul>
+      </Card>
     </div>
   );
 }
