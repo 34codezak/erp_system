@@ -13,6 +13,10 @@ const highlights = [
     description: "Close faster with automated reconciliations, budgeting, and audit trails."
   },
   {
+    title: "Smart Document Processing",
+    description: "Use OCR to capture invoice and receipt data with confidence scoring."
+  },
+  {
     title: "Supply Chain",
     description: "Forecast demand, optimize procurement, and protect inventory margins."
   }
@@ -41,6 +45,10 @@ const workflows = [
   {
     title: "Record-to-report",
     description: "Continuous close with automated journal entries and audit logs."
+  },
+  {
+    title: "Document intake automation",
+    description: "Extract, validate, and route invoice and receipt data with OCR."
   }
 ];
 
