@@ -156,9 +156,15 @@ export default function LandingPage() {
           <Card key={item.title} className="space-y-3">
             <h3 className="text-lg font-semibold">{item.title}</h3>
             <p className="text-sm text-slate-600">{item.description}</p>
-            <Link href={item.href}>
-              <Button variant="ghost">Explore module</Button>
-            </Link>
+            {item.href ? (
+              <Link href={item.href}>
+                <Button variant="ghost">Explore module</Button>
+              </Link>
+            ) : (
+              <Button variant="ghost" disabled>
+                Coming soon
+              </Button>
+            )}
           </Card>
         ))}
       </section>
