@@ -1,117 +1,134 @@
-# ERP System
+# Atlas ERP
 
-A modular, API-first Enterprise Resource Planning (ERP) platform designed to unify finance, inventory, procurement, HR, and sales into a single, extensible system.
+Production-ready ERP starter for managing HR, finance, inventory, liabilities, and operations with Supabase + Next.js.
 
-## Table of Contents
-- [Overview](#overview)
-- [Vision & Goals](#vision--goals)
-- [Current Status](#current-status)
-- [Planned Modules](#planned-modules)
-- [Architecture (Planned)](#architecture-planned)
-- [Getting Started (Placeholder)](#getting-started-placeholder)
-- [Configuration](#configuration)
-- [Testing](#testing)
-- [Project Structure (Planned)](#project-structure-planned)
-- [Roadmap](#roadmap)
-- [Contributing](#contributing)
-- [Security](#security)
-- [License](#license)
+## 1) System architecture plan
 
-## Overview
-This repository is the starting point for an ERP (Enterprise Resource Planning) system. It currently provides documentation and scaffolding for the future implementation. The goal is to give contributors a clear mental model of the system before the first modules are introduced.
+**Core layers**
+- **UI layer**: Next.js App Router for public marketing pages, auth flows, and protected ERP screens.
+- **API layer**: Server Actions for CRUD operations with strict schema validation (Zod) and RBAC gating.
+- **Data layer**: Supabase Postgres with RLS and organization-scoped multi-tenancy.
+- **Integrations**: Resend for transactional emails, Stripe for billing/webhooks, Supabase Storage for files.
 
-## Vision & Goals
-- **Single source of truth:** consolidate core business workflows (finance, inventory, HR, sales, procurement).
-- **Modular services:** enable independent deployment or unified releases.
-- **Integration-ready:** support connectors for accounting, CRM, payroll, and commerce platforms.
-- **Operational visibility:** deliver reporting, auditability, and analytics by default.
+**Security & auditability**
+- Role-based permissions (Admin, Manager, Staff, Accountant).
+- RLS enforced at the database layer for every core table.
+- Audit logs for sensitive updates with immutable event history.
 
-## Current Status
-- **Repository contents:** documentation scaffolding only.
-- **Application code:** not yet implemented.
-- **Next steps:** define the initial tech stack, add the first domain module, and introduce CI.
+## 2) Database schema & RLS
 
-## Planned Modules
-| Domain | Capabilities |
-| --- | --- |
-| Finance | General ledger, AP/AR, invoicing, expense tracking |
-| Inventory | Stock tracking, warehouse management, replenishment |
-| Sales & CRM | Customers, quotations, orders, pipelines |
-| Procurement | Vendors, purchase orders, approvals |
-| HR & Payroll | Employee profiles, time tracking, payroll |
-| Reporting | Dashboards, KPIs, exports |
+- Core schema is in [`supabase/schema.sql`](supabase/schema.sql).
+- RLS policies are in [`supabase/policies.sql`](supabase/policies.sql).
 
-## Architecture (Planned)
-- **Modular domains:** each domain is a bounded context with its own APIs.
-- **Shared core:** authentication, authorization, audit logging, and base data models.
-- **API-first design:** REST/GraphQL APIs with versioning and OpenAPI/SDL docs.
-- **Extensibility:** adapters/plugins for third-party integrations.
-- **Observability:** structured logging, metrics, and tracing for operational insight.
+### Multi-tenancy strategy
+- Every core table includes `organization_id`.
+- Access is limited to members of the organization in `org_memberships`.
+- Soft deletes via `deleted_at` to preserve audit history.
 
-## Getting Started (Placeholder)
-These steps outline the expected workflow once the codebase is populated.
+## 3) Frontend & backend scaffold
 
-1. **Clone the repository**
-   ```bash
-   git clone <repo-url>
-   cd erp_system
-   ```
+- `app/(public)` hosts marketing pages (landing, pricing, about, contact).
+- `app/(auth)` hosts sign-in, sign-up, reset flows.
+- `app/(app)` hosts protected ERP modules.
+- `app/actions` contains Server Actions for CRUD operations.
+- `components/ui` contains shadcn-style primitives.
 
-2. **Install dependencies**
-   ```bash
-   # Example (update when tech stack is chosen)
-   # npm install
-   # pip install -r requirements.txt
-   ```
+## 4) Module implementation plan
 
-3. **Configure environment**
-   ```bash
-   # Example
-   # cp .env.example .env
-   # edit .env
-   ```
+1. **Auth & RBAC**
+   - Supabase Auth sign-up/sign-in.
+   - Assign default role on user creation.
+   - Gate Server Actions with `roleCapabilities` from `lib/rbac.ts`.
+2. **HR module**
+   - Employee profiles, departments, payroll.
+   - Approvals and review workflows.
+3. **Finance module**
+   - Expenses, revenues, liabilities.
+   - Ledger dashboard with balance sheet reports.
+4. **Inventory & assets**
+   - Inventory items, suppliers, asset assignments.
+   - Depreciation schedules.
+5. **Reports & analytics**
+   - CSV/PDF export via Server Actions.
+   - KPI dashboards and scheduled email exports.
+6. **Admin**
+   - Role management, audit logs, org settings.
 
-4. **Run the application**
-   ```bash
-   # Example
-   # npm run dev
-   # python manage.py runserver
-   ```
+## 5) Setup & configuration
 
-## Configuration
-Once the stack is defined, configuration will likely include:
-- Environment variables for databases, queues, and third-party services.
-- Per-module configuration files.
-- Optional docker-compose or Kubernetes manifests.
-
-## Testing
-Testing strategy will be added with the first module. Planned coverage includes:
-- **Unit tests** for domain logic.
-- **Integration tests** for API, database, and queue layers.
-- **End-to-end tests** for cross-module workflows.
-
-## Project Structure (Planned)
-```
-/erp_system
-  /modules          # Domain modules (finance, inventory, etc.)
-  /shared           # Shared utilities and core services
-  /docs             # Documentation and architectural decision records
-  /scripts          # Automation scripts and tooling
+### Local setup
+```bash
+npm install
+cp .env.example .env.local
+npm run dev
 ```
 
-## Roadmap
-- **Phase 1:** define core stack, add auth, create first domain module.
-- **Phase 2:** implement finance + inventory modules, introduce reporting.
-- **Phase 3:** expand integrations and add advanced analytics.
+### Supabase
+1. Create a Supabase project.
+2. Run `supabase/schema.sql` and `supabase/policies.sql` in the SQL editor.
+3. Enable email auth providers as needed.
+4. Add storage bucket for receipts/documents.
 
-## Contributing
-Until a formal contribution guide is added:
-- Open issues for bugs, feature requests, or design proposals.
-- Use clear branch names and descriptive commits.
-- Keep documentation updated as you add code.
+### Resend
+1. Create a Resend API key.
+2. Set `RESEND_API_KEY` and `RESEND_FROM_EMAIL`.
+3. Use in Server Actions to send onboarding, payroll, and alert emails.
 
-## Security
-If you discover a security issue, please open a private issue or contact the maintainers directly once a security policy is available.
+### Stripe (optional billing)
+1. Create products and prices in Stripe.
+2. Set `STRIPE_SECRET_KEY`, `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY`, `STRIPE_PRICE_ID`.
+3. Configure webhook endpoint in Next.js (recommended `/api/stripe/webhook`).
+4. Store webhook secret in `STRIPE_WEBHOOK_SECRET`.
 
-## License
-License information will be added when the project is ready for public distribution.
+### Vercel deployment
+1. Push to GitHub.
+2. Import project in Vercel.
+3. Configure environment variables from `.env.example`.
+4. Set Supabase URL and anon key in Vercel dashboard.
+
+## 6) Security, validation, scalability
+
+- Validate all Server Action inputs with Zod.
+- Enforce RLS policies for all data access.
+- Use row-level soft deletes to preserve audit trails.
+- Add structured logging for finance and payroll actions.
+- Rate-limit external webhooks.
+
+## Manual verification checklist
+
+### Public pages
+- [ ] Landing page renders highlight sections.
+- [ ] Pricing, About, Contact pages show content.
+
+### Auth
+- [ ] Sign up creates a Supabase auth user.
+- [ ] Sign in redirects to `/dashboard`.
+- [ ] Password reset sends email.
+
+### Dashboard
+- [ ] Metrics cards render.
+- [ ] Alerts list shows placeholder data.
+
+### HR module
+- [ ] Employee list loads.
+- [ ] Payroll entries can be created.
+
+### Finance module
+- [ ] Expenses can be submitted.
+- [ ] Revenue entries appear in ledger.
+
+### Inventory & assets
+- [ ] Inventory items can be updated.
+- [ ] Assets show depreciation schedule.
+
+### Reports & analytics
+- [ ] CSV/PDF exports download.
+- [ ] KPI dashboard loads charts.
+
+### Admin panel
+- [ ] Role assignments update successfully.
+- [ ] Audit log entries appear.
+
+## Environment variables
+
+See `.env.example` for full list.
