@@ -17,6 +17,8 @@ const kpiTracking = [
   { label: "On-time delivery", value: "96.2%", target: "Target 95%" },
   { label: "Days cash on hand", value: "72 days", target: "Target 60 days" },
   { label: "Revenue per head", value: "$18.4K", target: "Target $17K" }
+];
+
 const focusAreas = [
   {
     title: "Finance & accounting",
@@ -71,7 +73,9 @@ export default function DashboardPage() {
           <Card key={metric.label}>
             <p className="text-xs text-slate-500">{metric.label}</p>
             <p className="mt-2 text-2xl font-semibold">{metric.value}</p>
-            <p className="mt-1 text-xs text-emerald-600">{metric.change} vs last month</p>
+            <p className="mt-1 text-xs text-emerald-600">
+              {metric.change} vs last month
+            </p>
           </Card>
         ))}
       </div>
@@ -86,7 +90,28 @@ export default function DashboardPage() {
               <div key={feed.title} className="rounded-lg border border-slate-200 p-3">
                 <p className="text-sm font-semibold">{feed.title}</p>
                 <p className="mt-1 text-xs text-slate-500">{feed.detail}</p>
-                <p className="mt-3 text-xs font-medium text-emerald-600">{feed.status}</p>
+                <p className="mt-3 text-xs font-medium text-emerald-600">
+                  {feed.status}
+                </p>
+              </div>
+            ))}
+          </div>
+        </Card>
+        <Card>
+          <h2 className="text-lg font-semibold">Activity feed</h2>
+          <p className="mt-1 text-sm text-slate-600">
+            Recent updates from every module.
+          </p>
+          <div className="mt-4 space-y-4">
+            {activityFeed.map((item) => (
+              <div key={item.title}>
+                <p className="text-sm font-semibold text-slate-900">{item.title}</p>
+                <p className="text-xs text-slate-500">{item.detail}</p>
+              </div>
+            ))}
+          </div>
+        </Card>
+      </div>
       <div className="grid gap-4 lg:grid-cols-[1.2fr_0.8fr]">
         <Card>
           <h2 className="text-lg font-semibold">Operational focus</h2>
@@ -101,9 +126,7 @@ export default function DashboardPage() {
               >
                 <p className="text-sm font-medium text-slate-900">{area.title}</p>
                 <p className="mt-1 text-xs text-slate-500">{area.description}</p>
-                <p className="mt-3 text-xs font-semibold text-slate-700">
-                  {area.status}
-                </p>
+                <p className="mt-3 text-xs font-semibold text-slate-700">{area.status}</p>
               </div>
             ))}
           </div>
@@ -121,15 +144,6 @@ export default function DashboardPage() {
                   <p className="text-sm text-slate-700">{kpi.value}</p>
                 </div>
                 <p className="mt-1 text-xs text-slate-500">{kpi.target}</p>
-          <h2 className="text-lg font-semibold">Activity feed</h2>
-          <p className="mt-1 text-sm text-slate-600">
-            Recent updates from every module.
-          </p>
-          <div className="mt-4 space-y-4">
-            {activityFeed.map((item) => (
-              <div key={item.title}>
-                <p className="text-sm font-semibold text-slate-900">{item.title}</p>
-                <p className="text-xs text-slate-500">{item.detail}</p>
               </div>
             ))}
           </div>
