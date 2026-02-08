@@ -6,11 +6,13 @@ import { Card } from "@/components/ui/card";
 const highlights = [
   {
     title: "People Operations",
-    description: "Onboard talent, track performance, and automate payroll approvals."
+    description: "Onboard talent, track performance, and automate payroll approvals.",
+    href: "/modules/people-operations"
   },
   {
     title: "Finance & Accounting",
-    description: "Close faster with automated reconciliations, budgeting, and audit trails."
+    description: "Close faster with automated reconciliations, budgeting, and audit trails.",
+    href: "/modules/finance-accounting"
   },
   {
     title: "Smart Document Processing",
@@ -18,7 +20,8 @@ const highlights = [
   },
   {
     title: "Supply Chain",
-    description: "Forecast demand, optimize procurement, and protect inventory margins."
+    description: "Forecast demand, optimize procurement, and protect inventory margins.",
+    href: "/modules/supply-chain"
   }
 ];
 
@@ -153,7 +156,9 @@ export default function LandingPage() {
           <Card key={item.title} className="space-y-3">
             <h3 className="text-lg font-semibold">{item.title}</h3>
             <p className="text-sm text-slate-600">{item.description}</p>
-            <Button variant="ghost">Explore module</Button>
+            <Link href={item.href}>
+              <Button variant="ghost">Explore module</Button>
+            </Link>
           </Card>
         ))}
       </section>
