@@ -1,56 +1,77 @@
 # ERP System
 
-## Overview
-This repository is the starting point for an ERP (Enterprise Resource Planning) system. At the moment, the repository is intentionally minimal and serves as a scaffold for future development. The documentation below captures the intended structure, conventions, and workflow so contributors can align as the codebase grows.
+A modular, API-first Enterprise Resource Planning (ERP) platform designed to unify finance, inventory, procurement, HR, and sales into a single, extensible system.
 
-## Project Goals
-- Centralize core business workflows (finance, inventory, HR, sales, procurement) into a single system.
-- Provide modular services that can be deployed independently or together.
-- Offer configurable integrations with common external systems (accounting, CRM, payroll, e-commerce).
+## Table of Contents
+- [Overview](#overview)
+- [Vision & Goals](#vision--goals)
+- [Current Status](#current-status)
+- [Planned Modules](#planned-modules)
+- [Architecture (Planned)](#architecture-planned)
+- [Getting Started (Placeholder)](#getting-started-placeholder)
+- [Configuration](#configuration)
+- [Testing](#testing)
+- [Project Structure (Planned)](#project-structure-planned)
+- [Roadmap](#roadmap)
+- [Contributing](#contributing)
+- [Security](#security)
+- [License](#license)
+
+## Overview
+This repository is the starting point for an ERP (Enterprise Resource Planning) system. It currently provides documentation and scaffolding for the future implementation. The goal is to give contributors a clear mental model of the system before the first modules are introduced.
+
+## Vision & Goals
+- **Single source of truth:** consolidate core business workflows (finance, inventory, HR, sales, procurement).
+- **Modular services:** enable independent deployment or unified releases.
+- **Integration-ready:** support connectors for accounting, CRM, payroll, and commerce platforms.
+- **Operational visibility:** deliver reporting, auditability, and analytics by default.
 
 ## Current Status
-- **Repository contents:** only basic scaffolding files are present.
+- **Repository contents:** documentation scaffolding only.
 - **Application code:** not yet implemented.
-- **Next steps:** establish the initial service architecture and add the first module(s).
+- **Next steps:** define the initial tech stack, add the first domain module, and introduce CI.
 
-## Planned Features
-- **Finance:** general ledger, accounts payable/receivable, invoicing.
-- **Inventory:** stock tracking, warehousing, replenishment.
-- **Sales & CRM:** customer management, quotations, orders.
-- **Procurement:** vendor management, purchase orders, approvals.
-- **HR & Payroll:** employee records, time tracking, payroll processing.
-- **Reporting & Analytics:** dashboards, KPIs, exportable reports.
+## Planned Modules
+| Domain | Capabilities |
+| --- | --- |
+| Finance | General ledger, AP/AR, invoicing, expense tracking |
+| Inventory | Stock tracking, warehouse management, replenishment |
+| Sales & CRM | Customers, quotations, orders, pipelines |
+| Procurement | Vendors, purchase orders, approvals |
+| HR & Payroll | Employee profiles, time tracking, payroll |
+| Reporting | Dashboards, KPIs, exports |
 
 ## Architecture (Planned)
-- **Modular services:** each domain (finance, inventory, etc.) lives in its own module.
-- **Shared core:** common utilities, data models, and authentication/authorization.
-- **API-first design:** REST/GraphQL APIs for UI and integrations.
-- **Extensibility:** plugins or adapters for third-party systems.
+- **Modular domains:** each domain is a bounded context with its own APIs.
+- **Shared core:** authentication, authorization, audit logging, and base data models.
+- **API-first design:** REST/GraphQL APIs with versioning and OpenAPI/SDL docs.
+- **Extensibility:** adapters/plugins for third-party integrations.
+- **Observability:** structured logging, metrics, and tracing for operational insight.
 
 ## Getting Started (Placeholder)
 These steps outline the expected workflow once the codebase is populated.
 
-1. **Clone the repository:**
+1. **Clone the repository**
    ```bash
    git clone <repo-url>
    cd erp_system
    ```
 
-2. **Install dependencies:**
+2. **Install dependencies**
    ```bash
    # Example (update when tech stack is chosen)
    # npm install
    # pip install -r requirements.txt
    ```
 
-3. **Configure environment:**
+3. **Configure environment**
    ```bash
    # Example
    # cp .env.example .env
    # edit .env
    ```
 
-4. **Run the application:**
+4. **Run the application**
    ```bash
    # Example
    # npm run dev
@@ -58,18 +79,18 @@ These steps outline the expected workflow once the codebase is populated.
    ```
 
 ## Configuration
-Configuration details will be documented once the system has a defined stack. Expect:
-- Environment variables for database connections and secrets.
-- Service configuration files for per-module settings.
+Once the stack is defined, configuration will likely include:
+- Environment variables for databases, queues, and third-party services.
+- Per-module configuration files.
 - Optional docker-compose or Kubernetes manifests.
 
-## Testing (Planned)
-Once a test suite exists, it should cover:
-- Unit tests for domain logic.
-- Integration tests for database and API layers.
-- End-to-end tests for core workflows.
+## Testing
+Testing strategy will be added with the first module. Planned coverage includes:
+- **Unit tests** for domain logic.
+- **Integration tests** for API, database, and queue layers.
+- **End-to-end tests** for cross-module workflows.
 
-## Repository Structure (Planned)
+## Project Structure (Planned)
 ```
 /erp_system
   /modules          # Domain modules (finance, inventory, etc.)
@@ -78,11 +99,19 @@ Once a test suite exists, it should cover:
   /scripts          # Automation scripts and tooling
 ```
 
+## Roadmap
+- **Phase 1:** define core stack, add auth, create first domain module.
+- **Phase 2:** implement finance + inventory modules, introduce reporting.
+- **Phase 3:** expand integrations and add advanced analytics.
+
 ## Contributing
 Until a formal contribution guide is added:
-- Open issues for bugs, feature requests, or proposals.
+- Open issues for bugs, feature requests, or design proposals.
 - Use clear branch names and descriptive commits.
 - Keep documentation updated as you add code.
+
+## Security
+If you discover a security issue, please open a private issue or contact the maintainers directly once a security policy is available.
 
 ## License
 License information will be added when the project is ready for public distribution.
