@@ -1,4 +1,4 @@
-import { Card } from "@/components/ui/card";
+import { RecordEntryCard } from "@/components/record-entry-card";
 
 export default function AdminPage() {
   return (
@@ -10,18 +10,24 @@ export default function AdminPage() {
         </p>
       </div>
       <div className="grid gap-4 md:grid-cols-2">
-        <Card>
+        <RecordEntryCard
+          entryTitle="Access control"
+          entryDescription="Log access changes or role requests."
+        >
           <h2 className="text-lg font-semibold">Access control</h2>
           <p className="mt-2 text-sm text-slate-600">
             Manage role assignments and permission sets for each department.
           </p>
-        </Card>
-        <Card>
+        </RecordEntryCard>
+        <RecordEntryCard
+          entryTitle="Audit logs"
+          entryDescription="Record reviews or follow-ups on audit events."
+        >
           <h2 className="text-lg font-semibold">Audit logs</h2>
           <p className="mt-2 text-sm text-slate-600">
             Review sensitive changes with immutable audit trails.
           </p>
-        </Card>
+        </RecordEntryCard>
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import { Card } from "@/components/ui/card";
+import { RecordEntryCard } from "@/components/record-entry-card";
 
 const highlights = [
   { label: "Active employees", value: "128" },
@@ -37,14 +37,17 @@ export default function HrPage() {
       </div>
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
         {highlights.map((item) => (
-          <Card key={item.label}>
+          <RecordEntryCard key={item.label} entryTitle={item.label}>
             <p className="text-xs text-slate-500">{item.label}</p>
             <p className="mt-2 text-2xl font-semibold">{item.value}</p>
-          </Card>
+          </RecordEntryCard>
         ))}
       </div>
       <div className="grid gap-4 lg:grid-cols-2">
-        <Card>
+        <RecordEntryCard
+          entryTitle="Recruitment pipeline"
+          entryDescription="Log candidate updates and hiring milestones."
+        >
           <h2 className="text-lg font-semibold">Recruitment pipeline</h2>
           <p className="mt-1 text-sm text-slate-600">
             Track candidate stages and hiring velocity across departments.
@@ -65,8 +68,11 @@ export default function HrPage() {
               </div>
             ))}
           </div>
-        </Card>
-        <Card>
+        </RecordEntryCard>
+        <RecordEntryCard
+          entryTitle="Attendance & scheduling"
+          entryDescription="Record time-off, coverage, or staffing notes."
+        >
           <h2 className="text-lg font-semibold">Attendance & scheduling</h2>
           <p className="mt-1 text-sm text-slate-600">
             Daily coverage status and planned time-off.
@@ -87,9 +93,12 @@ export default function HrPage() {
               </div>
             ))}
           </div>
-        </Card>
+        </RecordEntryCard>
       </div>
-      <Card>
+      <RecordEntryCard
+        entryTitle="Performance management"
+        entryDescription="Capture review notes and coaching actions."
+      >
         <h2 className="text-lg font-semibold">Performance management</h2>
         <p className="mt-1 text-sm text-slate-600">
           Monitor review cycles, feedback, and growth plans.
@@ -105,7 +114,7 @@ export default function HrPage() {
             </div>
           ))}
         </div>
-      </Card>
+      </RecordEntryCard>
     </div>
   );
 }
