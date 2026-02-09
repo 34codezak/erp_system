@@ -107,7 +107,7 @@ const buttonBaseClasses =
 const linkButtonClasses = {
   primary: "bg-brand text-white hover:bg-brand/90",
   secondary:
-    "border border-white/60 bg-white/70 text-slate-900 shadow-sm shadow-blue-100/60 backdrop-blur hover:bg-white/90",
+    "border border-white/60 bg-white/70 text-slate-900 shadow-sm shadow-emerald-100/60 backdrop-blur hover:bg-white/90",
   ghost: "bg-white/40 text-slate-700 backdrop-blur hover:bg-white/70"
 };
 
@@ -123,11 +123,11 @@ const glassSurfaceMuted =
 
 export default function LandingPage() {
   return (
-    <main className="bg-gradient-to-br from-slate-100 via-white to-blue-50">
+    <main className="bg-gradient-to-br from-slate-100 via-white to-emerald-50">
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-6 py-10 md:gap-16 md:py-16">
         <section className="grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
           <div className="flex flex-col gap-6">
-            <span className="w-fit rounded-full border border-blue-200 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-blue-700">
+            <span className="w-fit rounded-full border border-emerald-200 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-emerald-700">
               Production-ready ERP
             </span>
             <div className="space-y-4">
@@ -166,7 +166,7 @@ export default function LandingPage() {
           </div>
           <Card
             className={cn(
-              "relative overflow-hidden bg-gradient-to-br from-white/80 via-white/70 to-blue-100/40",
+              "relative overflow-hidden bg-gradient-to-br from-white/80 via-white/70 to-emerald-100/40",
               glassSurfaceStrong
             )}
           >
@@ -226,7 +226,7 @@ export default function LandingPage() {
 
         <section className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
           <div className="flex flex-col gap-5">
-            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-600">
+            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-600">
               Automated workflows
             </span>
             <div className="space-y-3">
@@ -253,7 +253,7 @@ export default function LandingPage() {
           </div>
           <Card
             className={cn(
-              "bg-gradient-to-br from-white/80 via-white/70 to-blue-100/40",
+              "bg-gradient-to-br from-white/80 via-white/70 to-emerald-100/40",
               glassSurfaceStrong
             )}
           >
@@ -295,7 +295,7 @@ export default function LandingPage() {
         <section className="space-y-6">
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <div className="space-y-2">
-              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-600">
+              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-600">
                 Connected ecosystem
               </span>
               <h2 className="text-3xl font-semibold text-slate-900">
@@ -451,7 +451,7 @@ export default function LandingPage() {
         <section>
           <Card
             className={cn(
-              "border border-blue-200/60 bg-blue-100/50 shadow-[0_25px_60px_-40px_rgba(37,99,235,0.5)] backdrop-blur-2xl"
+              "border border-emerald-200/60 bg-emerald-100/50 shadow-[0_25px_60px_-40px_rgba(16,185,129,0.5)] backdrop-blur-2xl"
             )}
           >
             <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
