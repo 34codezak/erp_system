@@ -212,7 +212,9 @@ export default function LandingPage() {
               <span className="font-semibold text-slate-900">-0.8%</span>
             </div>
           </div>
-          <Button>View live dashboards</Button>
+          <Link href="/dashboard">
+            <Button>View live dashboards</Button>
+          </Link>
         </Card>
       </section>
 
