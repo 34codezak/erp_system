@@ -37,11 +37,11 @@ export default function PeopleOperationsPage() {
             People operations
           </p>
           <h1 className="mt-4 text-4xl font-semibold text-slate-900 lg:text-5xl">
-            Empower every employee journey with structured, automated HR workflows.
+            Guide every employee journey with structured, automated HR workflows.
           </h1>
           <p className="mt-5 text-base text-slate-600">
             Atlas ERP brings recruiting, onboarding, performance management, and payroll prep into a
-            single command center so HR teams can move faster without sacrificing compliance.
+            single command atlas so HR teams can move faster without sacrificing compliance.
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
             <Link href="/contact">
@@ -64,10 +64,10 @@ export default function PeopleOperationsPage() {
           </div>
         </div>
         <Card className="space-y-4 border border-slate-200 bg-white">
-          <h2 className="text-xl font-semibold text-slate-900">People operations suite</h2>
+          <h2 className="text-xl font-semibold text-slate-900">People operations compass</h2>
           <p className="text-sm text-slate-600">
             Track headcount, automate approvals, and keep every policy audit-ready with built-in
-            analytics.
+            guidance analytics.
           </p>
           <div className="space-y-3 text-sm text-slate-600">
             <div className="flex items-center justify-between rounded-md bg-slate-50 px-4 py-3">
@@ -100,7 +100,7 @@ export default function PeopleOperationsPage() {
         <Card className="flex flex-col items-start justify-between gap-6 border border-brand/20 bg-brand/5 p-8 md:flex-row md:items-center">
           <div>
             <h2 className="text-2xl font-semibold text-slate-900">
-              Deliver a people experience your teams love.
+              Deliver a people experience your teams can navigate with confidence.
             </h2>
             <p className="mt-2 text-sm text-slate-600">
               Launch role-based access, automated onboarding, and performance workflows in weeks.
