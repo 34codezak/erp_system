@@ -9,9 +9,9 @@
   --color-ink-100: #f3f4f6;
   --color-ink-50: #f9fafb;
   --color-white: #ffffff;
-  --color-brand: #1f3a8a;
-  --color-brand-strong: #1e40af;
-  --color-brand-soft: #dbeafe;
+  --color-brand: #1b5e20;
+  --color-brand-strong: #1b5e20;
+  --color-brand-soft: #1b5e20;
   --color-success: #15803d;
   --color-warning: #b45309;
   --color-neutral: #64748b;
@@ -35,10 +35,10 @@ body {
   color: var(--color-ink-700);
   background: radial-gradient(
       circle at top,
-      rgba(59, 130, 246, 0.08),
+      rgba(27, 94, 32, 0.16),
       transparent 45%
     ),
-    var(--color-ink-50);
+    var(--color-ink-100);
 }
 
 h1,
@@ -107,12 +107,12 @@ p {
 .btn--primary {
   background: var(--color-brand);
   color: var(--color-white);
-  box-shadow: 0 16px 32px rgba(30, 64, 175, 0.25);
+  box-shadow: 0 16px 32px rgba(27, 94, 32, 0.28);
 }
 
 .btn--primary:hover {
   transform: translateY(-1px);
-  box-shadow: 0 20px 36px rgba(30, 64, 175, 0.35);
+  box-shadow: 0 20px 36px rgba(27, 94, 32, 0.38);
   background: var(--color-brand-strong);
 }
 
@@ -144,10 +144,10 @@ p {
 .card--tone {
   background: linear-gradient(
     135deg,
-    rgba(219, 234, 254, 0.55),
+    rgba(27, 94, 32, 0.12),
     rgba(255, 255, 255, 0.8)
   );
-  border: 1px solid rgba(191, 219, 254, 0.7);
+  border: 1px solid rgba(27, 94, 32, 0.18);
 }
 
 .card__label {
