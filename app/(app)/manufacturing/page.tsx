@@ -1,4 +1,5 @@
 import { RecordEntryCard } from "@/components/record-entry-card";
+import { Button } from "@/components/ui/button";
 
 const productionStats = [
   { label: "Active work orders", value: "38" },
@@ -64,9 +65,14 @@ export default function ManufacturingPage() {
                     {item.components} components
                   </p>
                 </div>
-                <span className="rounded-full bg-emerald-50 px-3 py-1 text-xs text-emerald-700">
-                  {item.status}
-                </span>
+                <div className="flex items-center gap-2">
+                  <span className="rounded-full bg-emerald-50 px-3 py-1 text-xs text-emerald-700">
+                    {item.status}
+                  </span>
+                  <Button type="button" variant="ghost" size="sm">
+                    Update
+                  </Button>
+                </div>
               </div>
             ))}
           </div>
@@ -89,7 +95,12 @@ export default function ManufacturingPage() {
                   <p className="text-sm font-medium text-slate-900">{item.material}</p>
                   <p className="text-xs text-slate-500">{item.action}</p>
                 </div>
-                <span className="text-xs text-slate-500">{item.date}</span>
+                <div className="flex items-center gap-3">
+                  <span className="text-xs text-slate-500">{item.date}</span>
+                  <Button type="button" variant="ghost" size="sm">
+                    Update
+                  </Button>
+                </div>
               </div>
             ))}
           </div>
@@ -112,6 +123,11 @@ export default function ManufacturingPage() {
               <p className="text-sm font-medium text-slate-900">{item.line}</p>
               <p className="text-xs text-slate-500">{item.shift} shift</p>
               <p className="mt-2 text-xs text-slate-500">{item.status}</p>
+              <div className="mt-3">
+                <Button type="button" variant="ghost" size="sm">
+                  Update
+                </Button>
+              </div>
             </div>
           ))}
         </div>
