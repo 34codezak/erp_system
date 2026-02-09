@@ -69,14 +69,12 @@ const themeVariants = [
   {
     title: "Light workspace",
     description: "Keep focus with airy dashboards built for daylight operations.",
-    surface: "border-slate-200 bg-white",
     detail: "text-slate-600",
     accent: "border border-slate-200 bg-white text-slate-900 hover:bg-slate-100"
   },
   {
     title: "Dark workspace",
     description: "Reduce eye strain in low-light environments with contrast-rich panels.",
-    surface: "border-slate-800 bg-slate-950 text-slate-100",
     detail: "text-slate-300",
     accent: "border border-slate-700 bg-slate-900 text-slate-100 hover:bg-slate-800"
   }
@@ -108,16 +106,24 @@ const buttonBaseClasses =
 
 const linkButtonClasses = {
   primary: "bg-brand text-white hover:bg-brand/90",
-  secondary: "border border-slate-200 bg-white text-slate-900 hover:bg-slate-100",
-  ghost: "bg-transparent text-slate-700 hover:bg-slate-100"
+  secondary:
+    "border border-white/60 bg-white/70 text-slate-900 shadow-sm shadow-blue-100/60 backdrop-blur hover:bg-white/90",
+  ghost: "bg-white/40 text-slate-700 backdrop-blur hover:bg-white/70"
 };
 
 const linkButton = (variant: keyof typeof linkButtonClasses) =>
   cn(buttonBaseClasses, linkButtonClasses[variant]);
 
+const glassSurface =
+  "border border-white/50 bg-white/65 shadow-[0_20px_60px_-40px_rgba(15,23,42,0.7)] backdrop-blur-xl";
+const glassSurfaceStrong =
+  "border border-white/60 bg-white/80 shadow-[0_30px_80px_-50px_rgba(15,23,42,0.65)] backdrop-blur-2xl";
+const glassSurfaceMuted =
+  "border border-white/35 bg-white/55 shadow-[0_12px_30px_-24px_rgba(15,23,42,0.5)] backdrop-blur-lg";
+
 export default function LandingPage() {
   return (
-    <main className="bg-slate-50">
+    <main className="bg-gradient-to-br from-slate-100 via-white to-blue-50">
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-6 py-10 md:gap-16 md:py-16">
         <section className="grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
           <div className="flex flex-col gap-6">
@@ -158,7 +164,12 @@ export default function LandingPage() {
               ))}
             </div>
           </div>
-          <Card className="border border-slate-200 bg-white">
+          <Card
+            className={cn(
+              "relative overflow-hidden bg-gradient-to-br from-white/80 via-white/70 to-blue-100/40",
+              glassSurfaceStrong
+            )}
+          >
             <div className="flex flex-col gap-6">
               <img
                 src="https://undraw.co/illustrations/undraw_data_processing_yrrv.svg"
@@ -173,7 +184,10 @@ export default function LandingPage() {
               </div>
               <div className="grid gap-3 sm:grid-cols-2">
                 {metrics.map((metric) => (
-                  <div key={metric.label} className="rounded-lg bg-slate-50 p-3">
+                  <div
+                    key={metric.label}
+                    className="rounded-lg border border-white/50 bg-white/60 p-3 backdrop-blur"
+                  >
                     <p className="text-[0.7rem] uppercase tracking-[0.15em] text-slate-500">
                       {metric.label}
                     </p>
@@ -190,7 +204,7 @@ export default function LandingPage() {
 
         <section className="grid gap-4 lg:grid-cols-3">
           {highlights.map((item) => (
-            <Card key={item.title} className="border border-slate-200 bg-white">
+            <Card key={item.title} className={glassSurface}>
               <div className="flex h-full flex-col gap-4">
                 <div className="space-y-2">
                   <h3 className="text-lg font-semibold text-slate-900">{item.title}</h3>
@@ -226,7 +240,7 @@ export default function LandingPage() {
             </div>
             <div className="grid gap-3 sm:grid-cols-2">
               {workflows.map((workflow) => (
-                <Card key={workflow.title} className="border-0 bg-slate-50 shadow-none">
+                <Card key={workflow.title} className={glassSurfaceMuted}>
                   <div className="space-y-2">
                     <h3 className="text-sm font-semibold text-slate-900">
                       {workflow.title}
@@ -237,7 +251,12 @@ export default function LandingPage() {
               ))}
             </div>
           </div>
-          <Card className="border border-slate-200 bg-white">
+          <Card
+            className={cn(
+              "bg-gradient-to-br from-white/80 via-white/70 to-blue-100/40",
+              glassSurfaceStrong
+            )}
+          >
             <div className="flex flex-col gap-6">
               <img
                 src="https://undraw.co/illustrations/undraw_team_collaboration_re_ow29.svg"
@@ -259,7 +278,7 @@ export default function LandingPage() {
                 ].map((item) => (
                   <div
                     key={item.label}
-                    className="flex items-center justify-between rounded-lg bg-slate-50 px-3 py-2"
+                    className="flex items-center justify-between rounded-lg border border-white/50 bg-white/60 px-3 py-2 backdrop-blur"
                   >
                     <span className="text-sm text-slate-600">{item.label}</span>
                     <span className="text-sm font-semibold text-slate-900">{item.value}</span>
@@ -289,7 +308,7 @@ export default function LandingPage() {
           </div>
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {integrations.map((integration) => (
-              <Card key={integration} className="border border-slate-200 bg-white">
+              <Card key={integration} className={glassSurfaceMuted}>
                 <p className="text-sm text-slate-600">{integration}</p>
               </Card>
             ))}
@@ -318,17 +337,23 @@ export default function LandingPage() {
           {themeVariants.map((variant) => (
             <Card
               key={variant.title}
-              className={`border ${variant.surface} space-y-4`}
+              className={cn(
+                "space-y-4",
+                glassSurfaceStrong,
+                variant.title === "Dark workspace"
+                  ? "bg-slate-950/80 text-slate-100"
+                  : "bg-white/80 text-slate-900"
+              )}
             >
               <div>
                 <h3 className="text-lg font-semibold">{variant.title}</h3>
                 <p className={`mt-2 text-sm ${variant.detail}`}>{variant.description}</p>
               </div>
               <div
-                className={`rounded-lg border p-4 ${
-                  variant.title === "Light workspace"
-                    ? "border-slate-200 bg-slate-50"
-                    : "border-slate-800 bg-slate-900"
+                className={`rounded-lg border border-white/40 bg-white/60 p-4 backdrop-blur ${
+                  variant.title === "Dark workspace"
+                    ? "bg-slate-950/70 text-slate-100"
+                    : "text-slate-900"
                 }`}
               >
                 <div className="flex items-center justify-between">
@@ -348,10 +373,10 @@ export default function LandingPage() {
                   {["Cash flow", "Inventory", "Workforce"].map((label) => (
                     <div
                       key={label}
-                      className={`rounded-md border p-3 text-xs ${
-                        variant.title === "Light workspace"
-                          ? "border-slate-200 bg-white text-slate-700"
-                          : "border-slate-800 bg-slate-950 text-slate-200"
+                      className={`rounded-md border border-white/50 bg-white/70 p-3 text-xs backdrop-blur ${
+                        variant.title === "Dark workspace"
+                          ? "bg-slate-950/70 text-slate-200"
+                          : "text-slate-700"
                       }`}
                     >
                       <p className="font-semibold">{label}</p>
@@ -394,7 +419,7 @@ export default function LandingPage() {
         </div>
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {integrations.map((integration) => (
-            <Card key={integration} className="border border-slate-200 bg-white">
+            <Card key={integration} className={glassSurfaceMuted}>
               <p className="text-sm text-slate-600">{integration}</p>
             </Card>
           ))}
@@ -412,7 +437,7 @@ export default function LandingPage() {
         </div>
         <div className="mt-8 grid gap-6 lg:grid-cols-3">
           {testimonials.map((testimonial) => (
-            <Card key={testimonial.name} className="space-y-4">
+            <Card key={testimonial.name} className={cn("space-y-4", glassSurface)}>
               <p className="text-sm text-slate-600">“{testimonial.quote}”</p>
               <div>
                 <p className="text-sm font-semibold text-slate-900">{testimonial.name}</p>
@@ -424,7 +449,11 @@ export default function LandingPage() {
       </section>
 
         <section>
-          <Card className="border border-blue-200/60 bg-blue-50/70">
+          <Card
+            className={cn(
+              "border border-blue-200/60 bg-blue-100/50 shadow-[0_25px_60px_-40px_rgba(37,99,235,0.5)] backdrop-blur-2xl"
+            )}
+          >
             <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
               <div className="space-y-2">
                 <h2 className="text-2xl font-semibold text-slate-900">
