@@ -37,11 +37,11 @@ export default function FinanceAccountingPage() {
             Finance & accounting
           </p>
           <h1 className="mt-4 text-4xl font-semibold text-slate-900 lg:text-5xl">
-            Close faster with automated finance operations built for scale.
+            Close faster with automated finance operations charted for scale.
           </h1>
           <p className="mt-5 text-base text-slate-600">
             Atlas ERP streamlines reconciliations, approvals, and consolidations so finance teams
-            deliver clean closes and executive-ready insights without manual effort.
+            deliver clean closes and north-star insights without manual effort.
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
             <Link href="/contact">
@@ -64,9 +64,9 @@ export default function FinanceAccountingPage() {
           </div>
         </div>
         <Card className="space-y-4 border border-slate-200 bg-white">
-          <h2 className="text-xl font-semibold text-slate-900">Finance command center</h2>
+          <h2 className="text-xl font-semibold text-slate-900">Finance command atlas</h2>
           <p className="text-sm text-slate-600">
-            Consolidate entities, manage close tasks, and surface risks before month-end.
+            Consolidate entities, manage close tasks, and surface risks before month-end turns.
           </p>
           <div className="space-y-3 text-sm text-slate-600">
             <div className="flex items-center justify-between rounded-md bg-slate-50 px-4 py-3">
@@ -99,7 +99,7 @@ export default function FinanceAccountingPage() {
         <Card className="flex flex-col items-start justify-between gap-6 border border-brand/20 bg-brand/5 p-8 md:flex-row md:items-center">
           <div>
             <h2 className="text-2xl font-semibold text-slate-900">
-              See every ledger entry with confidence.
+              See every ledger entry with compass-level confidence.
             </h2>
             <p className="mt-2 text-sm text-slate-600">
               Launch continuous close workflows and multi-entity consolidations in weeks.
