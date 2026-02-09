@@ -1,5 +1,6 @@
 "use client";
 
+import type { Route } from "next";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -12,7 +13,7 @@ const navItems = [
   { href: "/inventory", label: "Inventory", shortLabel: "Inv" },
   { href: "/reports", label: "Reports", shortLabel: "Rpt" },
   { href: "/admin", label: "Admin", shortLabel: "Adm" }
-];
+] satisfies { href: Route; label: string; shortLabel: string }[];
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   const [isCollapsed, setIsCollapsed] = useState(false);
