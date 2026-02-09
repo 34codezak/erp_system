@@ -85,6 +85,25 @@ const testimonials = [
   }
 ];
 
+const themeVariants = [
+  {
+    title: "Light workspace",
+    description:
+      "Clean, airy layouts designed for focused daily operations and fast scanning.",
+    surface: "bg-white border-slate-200 text-slate-900",
+    detail: "text-slate-600",
+    accent: "bg-brand text-white"
+  },
+  {
+    title: "Midnight workspace",
+    description:
+      "A dark, high-contrast theme inspired by executive dashboards and control centers.",
+    surface: "bg-slate-950 border-slate-800 text-slate-100",
+    detail: "text-slate-400",
+    accent: "bg-sky-500 text-slate-900"
+  }
+];
+
 export default function LandingPage() {
   return (
     <main className="mx-auto max-w-6xl px-6 py-16">
@@ -216,6 +235,88 @@ export default function LandingPage() {
             <Button>View live dashboards</Button>
           </Link>
         </Card>
+      </section>
+
+      <section className="mt-16">
+        <div className="flex flex-wrap items-center justify-between gap-4">
+          <div className="space-y-3">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-brand">
+              Theme variations
+            </p>
+            <h2 className="text-3xl font-semibold text-slate-900">
+              Match your ERP workspace to every team and environment.
+            </h2>
+            <p className="text-sm text-slate-600">
+              Switch between light and dark modes to align with brand guidelines and keep
+              operators focused in every setting.
+            </p>
+          </div>
+          <Link href="/contact">
+            <Button variant="secondary">Explore themes</Button>
+          </Link>
+        </div>
+        <div className="mt-8 grid gap-6 lg:grid-cols-2">
+          {themeVariants.map((variant) => (
+            <Card
+              key={variant.title}
+              className={`border ${variant.surface} space-y-4`}
+            >
+              <div>
+                <h3 className="text-lg font-semibold">{variant.title}</h3>
+                <p className={`mt-2 text-sm ${variant.detail}`}>{variant.description}</p>
+              </div>
+              <div
+                className={`rounded-lg border p-4 ${
+                  variant.title === "Light workspace"
+                    ? "border-slate-200 bg-slate-50"
+                    : "border-slate-800 bg-slate-900"
+                }`}
+              >
+                <div className="flex items-center justify-between">
+                  <div className="text-xs font-semibold uppercase tracking-wide">
+                    Command center
+                  </div>
+                  <div className="flex items-center gap-2 text-xs">
+                    <span className="rounded-full border px-2 py-0.5">
+                      Insights
+                    </span>
+                    <span className="rounded-full border px-2 py-0.5">
+                      Alerts
+                    </span>
+                  </div>
+                </div>
+                <div className="mt-4 grid gap-3 sm:grid-cols-3">
+                  {["Cash flow", "Inventory", "Workforce"].map((label) => (
+                    <div
+                      key={label}
+                      className={`rounded-md border p-3 text-xs ${
+                        variant.title === "Light workspace"
+                          ? "border-slate-200 bg-white text-slate-700"
+                          : "border-slate-800 bg-slate-950 text-slate-200"
+                      }`}
+                    >
+                      <p className="font-semibold">{label}</p>
+                      <p className={`mt-2 text-lg font-semibold ${variant.detail}`}>
+                        {label === "Cash flow" ? "14.6m" : label === "Inventory" ? "2.1%" : "96%"}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-4 flex items-center justify-between">
+                  <p className={`text-xs ${variant.detail}`}>
+                    Sync status: real-time
+                  </p>
+                  <button
+                    className={`rounded-md px-3 py-1.5 text-xs font-semibold ${variant.accent}`}
+                    type="button"
+                  >
+                    Preview
+                  </button>
+                </div>
+              </div>
+            </Card>
+          ))}
+        </div>
       </section>
 
       <section className="mt-16">
