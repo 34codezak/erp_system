@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import { Button, Card } from "@mui/material";
 
+import LiveOpsBoard from "@/components/ui/LiveOpsBoard";
 import { cn } from "@/lib/utils";
 
 const highlights = [
@@ -222,6 +223,35 @@ export default function LandingPage() {
               </div>
             </Card>
           ))}
+        </section>
+
+        <section className="space-y-6">
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <div className="space-y-3">
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-600">
+                Interactive workspace
+              </p>
+              <h2 className="text-3xl font-semibold text-slate-900">
+                Keep teams moving with responsive, interactive operations.
+              </h2>
+              <p className="text-sm text-slate-600">
+                Surface live workflows, search instantly, and guide every decision with
+                automation signals that update in milliseconds.
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-2 text-xs font-semibold text-slate-500">
+              <span className="rounded-full border border-white/70 bg-white/70 px-3 py-1">
+                Keyboard-first controls
+              </span>
+              <span className="rounded-full border border-white/70 bg-white/70 px-3 py-1">
+                Zero-blocking UI
+              </span>
+              <span className="rounded-full border border-white/70 bg-white/70 px-3 py-1">
+                Instant filtering
+              </span>
+            </div>
+          </div>
+          <LiveOpsBoard />
         </section>
 
         <section className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
