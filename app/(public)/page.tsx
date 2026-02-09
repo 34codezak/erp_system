@@ -279,29 +279,132 @@ export default function LandingPage() {
           </div>
         </section>
 
-        <section className="space-y-6">
-          <div className="space-y-2">
-            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-600">
-              Trusted by operators
-            </span>
+      <section className="mt-16">
+        <div className="flex flex-wrap items-center justify-between gap-4">
+          <div className="space-y-3">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-brand">
+              Theme variations
+            </p>
             <h2 className="text-3xl font-semibold text-slate-900">
-              Teams run smarter with Atlas ERP.
+              Match your ERP workspace to every team and environment.
             </h2>
+            <p className="text-sm text-slate-600">
+              Switch between light and dark modes to align with brand guidelines and keep
+              operators focused in every setting.
+            </p>
           </div>
-          <div className="grid gap-4 lg:grid-cols-3">
-            {testimonials.map((testimonial) => (
-              <Card key={testimonial.name} className="border border-slate-200 bg-white">
-                <div className="space-y-4">
-                  <p className="text-sm text-slate-600">“{testimonial.quote}”</p>
-                  <div>
-                    <p className="text-sm font-semibold text-slate-900">{testimonial.name}</p>
-                    <p className="text-xs text-slate-500">{testimonial.title}</p>
+          <Link href="/contact">
+            <Button variant="secondary">Explore themes</Button>
+          </Link>
+        </div>
+        <div className="mt-8 grid gap-6 lg:grid-cols-2">
+          {themeVariants.map((variant) => (
+            <Card
+              key={variant.title}
+              className={`border ${variant.surface} space-y-4`}
+            >
+              <div>
+                <h3 className="text-lg font-semibold">{variant.title}</h3>
+                <p className={`mt-2 text-sm ${variant.detail}`}>{variant.description}</p>
+              </div>
+              <div
+                className={`rounded-lg border p-4 ${
+                  variant.title === "Light workspace"
+                    ? "border-slate-200 bg-slate-50"
+                    : "border-slate-800 bg-slate-900"
+                }`}
+              >
+                <div className="flex items-center justify-between">
+                  <div className="text-xs font-semibold uppercase tracking-wide">
+                    Command center
+                  </div>
+                  <div className="flex items-center gap-2 text-xs">
+                    <span className="rounded-full border px-2 py-0.5">
+                      Insights
+                    </span>
+                    <span className="rounded-full border px-2 py-0.5">
+                      Alerts
+                    </span>
                   </div>
                 </div>
-              </Card>
-            ))}
+                <div className="mt-4 grid gap-3 sm:grid-cols-3">
+                  {["Cash flow", "Inventory", "Workforce"].map((label) => (
+                    <div
+                      key={label}
+                      className={`rounded-md border p-3 text-xs ${
+                        variant.title === "Light workspace"
+                          ? "border-slate-200 bg-white text-slate-700"
+                          : "border-slate-800 bg-slate-950 text-slate-200"
+                      }`}
+                    >
+                      <p className="font-semibold">{label}</p>
+                      <p className={`mt-2 text-lg font-semibold ${variant.detail}`}>
+                        {label === "Cash flow" ? "14.6m" : label === "Inventory" ? "2.1%" : "96%"}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-4 flex items-center justify-between">
+                  <p className={`text-xs ${variant.detail}`}>
+                    Sync status: real-time
+                  </p>
+                  <button
+                    className={`rounded-md px-3 py-1.5 text-xs font-semibold ${variant.accent}`}
+                    type="button"
+                  >
+                    Preview
+                  </button>
+                </div>
+              </div>
+            </Card>
+          ))}
+        </div>
+      </section>
+
+      <section className="mt-16">
+        <div className="flex flex-wrap items-center justify-between gap-4">
+          <div className="space-y-3">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-brand">
+              Connected ecosystem
+            </p>
+            <h2 className="text-3xl font-semibold text-slate-900">
+              Integrate every tool your teams already love.
+            </h2>
           </div>
-        </section>
+          <Link href="/contact">
+            <Button variant="secondary">Talk to integrations</Button>
+          </Link>
+        </div>
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {integrations.map((integration) => (
+            <Card key={integration} className="border border-slate-200 bg-white">
+              <p className="text-sm text-slate-600">{integration}</p>
+            </Card>
+          ))}
+        </div>
+      </section>
+
+      <section className="mt-16">
+        <div className="space-y-3">
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-brand">
+            Trusted by operators
+          </p>
+          <h2 className="text-3xl font-semibold text-slate-900">
+            Teams run smarter with Atlas ERP.
+          </h2>
+        </div>
+        <div className="mt-8 grid gap-6 lg:grid-cols-3">
+          {testimonials.map((testimonial) => (
+            <Card key={testimonial.name} className="space-y-4">
+              <p className="text-sm text-slate-600">“{testimonial.quote}”</p>
+              <div>
+                <p className="text-sm font-semibold text-slate-900">{testimonial.name}</p>
+                <p className="text-xs text-slate-500">{testimonial.title}</p>
+              </div>
+            </Card>
+          ))}
+        </div>
+      </section>
 
         <section>
           <Card className="border border-blue-200/60 bg-blue-50/70">
