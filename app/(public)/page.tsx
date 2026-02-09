@@ -65,6 +65,23 @@ const integrations = [
   "Custom webhooks and API keys"
 ];
 
+const themeVariants = [
+  {
+    title: "Light workspace",
+    description: "Keep focus with airy dashboards built for daylight operations.",
+    surface: "border-slate-200 bg-white",
+    detail: "text-slate-600",
+    accent: "border border-slate-200 bg-white text-slate-900 hover:bg-slate-100"
+  },
+  {
+    title: "Dark workspace",
+    description: "Reduce eye strain in low-light environments with contrast-rich panels.",
+    surface: "border-slate-800 bg-slate-950 text-slate-100",
+    detail: "text-slate-300",
+    accent: "border border-slate-700 bg-slate-900 text-slate-100 hover:bg-slate-800"
+  }
+];
+
 const testimonials = [
   {
     quote:
