@@ -1,8 +1,16 @@
 import Link from "next/link";
 
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { cn } from "@/lib/utils";
+import {
+  Box,
+  Button,
+  Card,
+  CardContent,
+  Chip,
+  Container,
+  Grid,
+  Stack,
+  Typography
+} from "@mui/material";
 
 const highlights = [
   {
@@ -101,6 +109,7 @@ const testimonials = [
   }
 ];
 
+const brandColor = "#1E4DB7";
 const buttonBaseClasses =
   "inline-flex items-center justify-center gap-2 rounded-md px-4 py-2 text-sm font-medium transition";
 
@@ -311,9 +320,8 @@ export default function LandingPage() {
               <Card key={integration} className={glassSurfaceMuted}>
                 <p className="text-sm text-slate-600">{integration}</p>
               </Card>
-            ))}
-          </div>
-        </section>
+            </Grid>
+          </Grid>
 
       <section className="mt-16">
         <div className="flex flex-wrap items-center justify-between gap-4">
@@ -473,8 +481,8 @@ export default function LandingPage() {
               </div>
             </div>
           </Card>
-        </section>
-      </div>
-    </main>
+        </Stack>
+      </Container>
+    </Box>
   );
 }
