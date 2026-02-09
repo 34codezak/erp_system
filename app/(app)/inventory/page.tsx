@@ -1,4 +1,4 @@
-import { Card } from "@/components/ui/card";
+import { RecordEntryCard } from "@/components/record-entry-card";
 
 const inventoryStats = [
   { label: "SKUs tracked", value: "1,248" },
@@ -37,14 +37,17 @@ export default function InventoryPage() {
       </div>
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
         {inventoryStats.map((item) => (
-          <Card key={item.label}>
+          <RecordEntryCard key={item.label} entryTitle={item.label}>
             <p className="text-xs text-slate-500">{item.label}</p>
             <p className="mt-2 text-2xl font-semibold">{item.value}</p>
-          </Card>
+          </RecordEntryCard>
         ))}
       </div>
       <div className="grid gap-4 lg:grid-cols-2">
-        <Card>
+        <RecordEntryCard
+          entryTitle="Stock levels"
+          entryDescription="Record counts, adjustments, or reorder notes."
+        >
           <h2 className="text-lg font-semibold">Stock levels</h2>
           <p className="mt-1 text-sm text-slate-600">
             Real-time availability with reorder thresholds.
@@ -65,8 +68,11 @@ export default function InventoryPage() {
               </div>
             ))}
           </div>
-        </Card>
-        <Card>
+        </RecordEntryCard>
+        <RecordEntryCard
+          entryTitle="Batch tracking"
+          entryDescription="Capture batch status changes and movements."
+        >
           <h2 className="text-lg font-semibold">Batch tracking</h2>
           <p className="mt-1 text-sm text-slate-600">
             End-to-end traceability for compliance and recalls.
@@ -87,9 +93,12 @@ export default function InventoryPage() {
               </div>
             ))}
           </div>
-        </Card>
+        </RecordEntryCard>
       </div>
-      <Card>
+      <RecordEntryCard
+        entryTitle="Barcode & RFID coverage"
+        entryDescription="Log scanning audits or coverage updates."
+      >
         <h2 className="text-lg font-semibold">Barcode & RFID coverage</h2>
         <p className="mt-1 text-sm text-slate-600">
           Accuracy metrics for automated warehouse scanning.
@@ -105,7 +114,7 @@ export default function InventoryPage() {
             </div>
           ))}
         </div>
-      </Card>
+      </RecordEntryCard>
     </div>
   );
 }

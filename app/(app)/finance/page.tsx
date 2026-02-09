@@ -1,4 +1,4 @@
-import { Card } from "@/components/ui/card";
+import { RecordEntryCard } from "@/components/record-entry-card";
 
 const ledger = [
   { label: "General ledger balance", value: "$8.4M", change: "+4.2%" },
@@ -37,15 +37,18 @@ export default function FinancePage() {
       </div>
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
         {ledger.map((item) => (
-          <Card key={item.label}>
+          <RecordEntryCard key={item.label} entryTitle={item.label}>
             <p className="text-xs text-slate-500">{item.label}</p>
             <p className="mt-2 text-2xl font-semibold">{item.value}</p>
             <p className="mt-1 text-xs text-emerald-600">{item.change} vs last month</p>
-          </Card>
+          </RecordEntryCard>
         ))}
       </div>
       <div className="grid gap-4 lg:grid-cols-[1.2fr_0.8fr]">
-        <Card>
+        <RecordEntryCard
+          entryTitle="Budget vs actual"
+          entryDescription="Log budget adjustments or variance notes."
+        >
           <h2 className="text-lg font-semibold">Budget vs actual</h2>
           <p className="mt-1 text-sm text-slate-600">
             Department-level tracking for proactive cost management.
@@ -65,8 +68,11 @@ export default function FinancePage() {
               </div>
             ))}
           </div>
-        </Card>
-        <Card>
+        </RecordEntryCard>
+        <RecordEntryCard
+          entryTitle="Tax & compliance"
+          entryDescription="Record filing updates or compliance tasks."
+        >
           <h2 className="text-lg font-semibold">Tax & compliance</h2>
           <p className="mt-1 text-sm text-slate-600">
             Upcoming filings, approvals, and statutory deadlines.
@@ -76,10 +82,13 @@ export default function FinancePage() {
             <li>• 1099 contractor review scheduled.</li>
             <li>• Regional tax remittance ready for sign-off.</li>
           </ul>
-        </Card>
+        </RecordEntryCard>
       </div>
       <div className="grid gap-4 lg:grid-cols-2">
-        <Card>
+        <RecordEntryCard
+          entryTitle="Invoicing & collections"
+          entryDescription="Capture invoice notes, disputes, or payments."
+        >
           <h2 className="text-lg font-semibold">Invoicing & collections</h2>
           <p className="mt-1 text-sm text-slate-600">
             Monitor billing milestones, dunning, and customer balances.
@@ -100,8 +109,11 @@ export default function FinancePage() {
               </div>
             ))}
           </div>
-        </Card>
-        <Card>
+        </RecordEntryCard>
+        <RecordEntryCard
+          entryTitle="Payroll processing"
+          entryDescription="Record payroll approvals or adjustments."
+        >
           <h2 className="text-lg font-semibold">Payroll processing</h2>
           <p className="mt-1 text-sm text-slate-600">
             Review payroll runs, approvals, and tax withholdings.
@@ -122,7 +134,7 @@ export default function FinancePage() {
               </div>
             ))}
           </div>
-        </Card>
+        </RecordEntryCard>
       </div>
     </div>
   );

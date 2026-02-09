@@ -1,4 +1,4 @@
-import { Card } from "@/components/ui/card";
+import { RecordEntryCard } from "@/components/record-entry-card";
 
 const reports = [
   { name: "Balance sheet", format: "PDF" },
@@ -38,14 +38,17 @@ export default function ReportsPage() {
       </div>
       <div className="grid gap-4 md:grid-cols-3">
         {reports.map((report) => (
-          <Card key={report.name}>
+          <RecordEntryCard key={report.name} entryTitle={report.name}>
             <p className="text-sm font-semibold">{report.name}</p>
             <p className="mt-2 text-xs text-slate-500">Export: {report.format}</p>
-          </Card>
+          </RecordEntryCard>
         ))}
       </div>
       <div className="grid gap-4 lg:grid-cols-[1.2fr_1fr]">
-        <Card>
+        <RecordEntryCard
+          entryTitle="Analytics insights"
+          entryDescription="Capture analytics findings or alert notes."
+        >
           <h2 className="text-lg font-semibold">Analytics insights</h2>
           <p className="mt-3 text-sm text-slate-600">
             Forecasting models, variance analysis, and KPI alerts are configured per
@@ -59,8 +62,11 @@ export default function ReportsPage() {
               </div>
             ))}
           </div>
-        </Card>
-        <Card>
+        </RecordEntryCard>
+        <RecordEntryCard
+          entryTitle="Business intelligence tools"
+          entryDescription="Record connector requests or dashboard needs."
+        >
           <h2 className="text-lg font-semibold">Business intelligence tools</h2>
           <p className="mt-2 text-sm text-slate-600">
             Enable governed exploration with embedded BI and external connectors.
@@ -70,7 +76,7 @@ export default function ReportsPage() {
               <li key={item}>• {item}</li>
             ))}
           </ul>
-        </Card>
+        </RecordEntryCard>
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import { Card } from "@/components/ui/card";
+import { RecordEntryCard } from "@/components/record-entry-card";
 
 const productionStats = [
   { label: "Active work orders", value: "38" },
@@ -37,14 +37,17 @@ export default function ManufacturingPage() {
       </div>
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
         {productionStats.map((item) => (
-          <Card key={item.label}>
+          <RecordEntryCard key={item.label} entryTitle={item.label}>
             <p className="text-xs text-slate-500">{item.label}</p>
             <p className="mt-2 text-2xl font-semibold">{item.value}</p>
-          </Card>
+          </RecordEntryCard>
         ))}
       </div>
       <div className="grid gap-4 lg:grid-cols-2">
-        <Card>
+        <RecordEntryCard
+          entryTitle="Bill of materials"
+          entryDescription="Log new BOM revisions or component updates."
+        >
           <h2 className="text-lg font-semibold">Bill of materials</h2>
           <p className="mt-1 text-sm text-slate-600">
             Approved BOMs aligned with engineering change orders.
@@ -67,8 +70,11 @@ export default function ManufacturingPage() {
               </div>
             ))}
           </div>
-        </Card>
-        <Card>
+        </RecordEntryCard>
+        <RecordEntryCard
+          entryTitle="MRP recommendations"
+          entryDescription="Capture planning actions and supplier responses."
+        >
           <h2 className="text-lg font-semibold">MRP recommendations</h2>
           <p className="mt-1 text-sm text-slate-600">
             Automated material planning based on demand signals.
@@ -87,9 +93,12 @@ export default function ManufacturingPage() {
               </div>
             ))}
           </div>
-        </Card>
+        </RecordEntryCard>
       </div>
-      <Card>
+      <RecordEntryCard
+        entryTitle="Production scheduling"
+        entryDescription="Record shift changes, line status, or utilization."
+      >
         <h2 className="text-lg font-semibold">Production scheduling</h2>
         <p className="mt-1 text-sm text-slate-600">
           Live view of line utilization and shift readiness.
@@ -106,7 +115,7 @@ export default function ManufacturingPage() {
             </div>
           ))}
         </div>
-      </Card>
+      </RecordEntryCard>
     </div>
   );
 }

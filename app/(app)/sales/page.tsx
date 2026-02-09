@@ -1,4 +1,4 @@
-import { Card } from "@/components/ui/card";
+import { RecordEntryCard } from "@/components/record-entry-card";
 
 const pipeline = [
   { stage: "Qualified", value: "$420K", count: "18 deals" },
@@ -38,14 +38,17 @@ export default function SalesPage() {
       </div>
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
         {billing.map((item) => (
-          <Card key={item.metric}>
+          <RecordEntryCard key={item.metric} entryTitle={item.metric}>
             <p className="text-xs text-slate-500">{item.metric}</p>
             <p className="mt-2 text-2xl font-semibold">{item.value}</p>
-          </Card>
+          </RecordEntryCard>
         ))}
       </div>
       <div className="grid gap-4 lg:grid-cols-2">
-        <Card>
+        <RecordEntryCard
+          entryTitle="Pipeline overview"
+          entryDescription="Record stage updates, win notes, or risks."
+        >
           <h2 className="text-lg font-semibold">Pipeline overview</h2>
           <p className="mt-1 text-sm text-slate-600">
             Track conversion, velocity, and forecasted revenue.
@@ -66,8 +69,11 @@ export default function SalesPage() {
               </div>
             ))}
           </div>
-        </Card>
-        <Card>
+        </RecordEntryCard>
+        <RecordEntryCard
+          entryTitle="Top accounts"
+          entryDescription="Capture account touches or health changes."
+        >
           <h2 className="text-lg font-semibold">Top accounts</h2>
           <p className="mt-1 text-sm text-slate-600">
             Relationship health and engagement signals.
@@ -88,9 +94,12 @@ export default function SalesPage() {
               </div>
             ))}
           </div>
-        </Card>
+        </RecordEntryCard>
       </div>
-      <Card>
+      <RecordEntryCard
+        entryTitle="Order execution"
+        entryDescription="Record order milestones or fulfillment notes."
+      >
         <h2 className="text-lg font-semibold">Order execution</h2>
         <p className="mt-1 text-sm text-slate-600">
           Align sales orders with fulfillment and billing milestones.
@@ -109,7 +118,7 @@ export default function SalesPage() {
             </div>
           ))}
         </div>
-      </Card>
+      </RecordEntryCard>
     </div>
   );
 }
