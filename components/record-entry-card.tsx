@@ -1,6 +1,8 @@
 "use client";
 
+import React from "react";
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 
 type RecordEntryCardProps = {
@@ -167,9 +169,5 @@ export function RecordEntryCard({
         </div>
       )}
     </>
-  return (
-    <Card className={cn("relative", className)}>
-      <div>{children}</div>
-    </Card>
   );
 }
