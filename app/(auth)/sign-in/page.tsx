@@ -13,6 +13,7 @@ export default function SignInPage() {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -53,14 +54,24 @@ export default function SignInPage() {
           </label>
           <label className="block text-sm">
             Password
-            <input
-              type="password"
-              className="mt-1 w-full rounded-md border border-slate-200 px-3 py-2"
-              placeholder="••••••••"
-              value={password}
-              onChange={(event) => setPassword(event.target.value)}
-              required
-            />
+            <div className="relative mt-1">
+              <input
+                type={isPasswordVisible ? "text" : "password"}
+                className="w-full rounded-md border border-slate-200 px-3 py-2 pr-14"
+                placeholder="••••••••"
+                value={password}
+                onChange={(event) => setPassword(event.target.value)}
+                required
+              />
+              <button
+                type="button"
+                className="absolute inset-y-0 right-0 flex items-center px-3 text-xs font-medium text-slate-500 hover:text-slate-700"
+                onClick={() => setIsPasswordVisible((previous) => !previous)}
+                aria-label={isPasswordVisible ? "Hide password" : "Show password"}
+              >
+                {isPasswordVisible ? "Hide" : "Show"}
+              </button>
+            </div>
           </label>
           <Button className="w-full" disabled={isSubmitting}>
             {isSubmitting ? "Signing in..." : "Sign in"}
