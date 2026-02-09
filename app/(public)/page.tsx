@@ -1,15 +1,8 @@
 import Link from "next/link";
 
-import {
-  Box,
-  Button,
-  Card,
-  CardContent,
-  Chip,
-  Container,
-  Stack,
-  Typography
-} from "@mui/material";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
 
 const highlights = [
   {
@@ -93,309 +86,198 @@ const testimonials = [
   }
 ];
 
-const themeVariants = [
-  {
-    title: "Light workspace",
-    description:
-      "Clean, airy layouts designed for focused daily operations and fast scanning.",
-    surface: "bg-white border-slate-200 text-slate-900",
-    detail: "text-slate-600",
-    accent: "bg-brand text-white"
-  },
-  {
-    title: "Midnight workspace",
-    description:
-      "A dark, high-contrast theme inspired by executive dashboards and control centers.",
-    surface: "bg-slate-950 border-slate-800 text-slate-100",
-    detail: "text-slate-400",
-    accent: "bg-sky-500 text-slate-900"
-  }
-];
+const buttonBaseClasses =
+  "inline-flex items-center justify-center gap-2 rounded-md px-4 py-2 text-sm font-medium transition";
+
+const linkButtonClasses = {
+  primary: "bg-brand text-white hover:bg-brand/90",
+  secondary: "border border-slate-200 bg-white text-slate-900 hover:bg-slate-100",
+  ghost: "bg-transparent text-slate-700 hover:bg-slate-100"
+};
+
+const linkButton = (variant: keyof typeof linkButtonClasses) =>
+  cn(buttonBaseClasses, linkButtonClasses[variant]);
 
 export default function LandingPage() {
   return (
-    <Box component="main" sx={{ backgroundColor: "#f8fafc" }}>
-      <Container maxWidth="lg" sx={{ py: { xs: 6, md: 10 } }}>
-        <Box
-          sx={{
-            display: "grid",
-            gap: 6,
-            alignItems: "center",
-            gridTemplateColumns: { md: "1.1fr 0.9fr" }
-          }}
-        >
-          <Stack spacing={3}>
-            <Chip
-              label="Production-ready ERP"
-              color="primary"
-              variant="outlined"
-              sx={{ alignSelf: "flex-start", textTransform: "uppercase", letterSpacing: 2 }}
-            />
-            <Typography variant="h2" fontWeight={600} color="text.primary">
-              Run every department on a single automated ERP platform.
-            </Typography>
-            <Typography variant="body1" color="text.secondary">
-              Atlas ERP unifies finance, supply chain, HR, and operations with intelligent
-              workflows, secure approvals, and executive analytics that keep leadership aligned.
-            </Typography>
-            <Stack direction={{ xs: "column", sm: "row" }} spacing={2} flexWrap="wrap">
-              <Button
-                component={Link}
-                href="/sign-up"
-                variant="contained"
-                color="primary"
-              >
+    <main className="bg-slate-50">
+      <div className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-6 py-10 md:gap-16 md:py-16">
+        <section className="grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
+          <div className="flex flex-col gap-6">
+            <span className="w-fit rounded-full border border-blue-200 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-blue-700">
+              Production-ready ERP
+            </span>
+            <div className="space-y-4">
+              <h1 className="text-4xl font-semibold text-slate-900 md:text-5xl">
+                Run every department on a single automated ERP platform.
+              </h1>
+              <p className="text-base text-slate-600">
+                Atlas ERP unifies finance, supply chain, HR, and operations with intelligent
+                workflows, secure approvals, and executive analytics that keep leadership aligned.
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-3">
+              <Link className={linkButton("primary")} href="/sign-up">
                 Start free
-              </Button>
-              <Button component={Link} href="/pricing" variant="outlined">
+              </Link>
+              <Link className={linkButton("secondary")} href="/pricing">
                 View pricing
-              </Button>
-              <Button component={Link} href="/contact" variant="text">
+              </Link>
+              <Link className={linkButton("ghost")} href="/contact">
                 Request a demo
-              </Button>
-            </Stack>
-            <Box
-              sx={{
-                display: "grid",
-                gap: 2,
-                gridTemplateColumns: { sm: "repeat(2, minmax(0, 1fr))" }
-              }}
-            >
+              </Link>
+            </div>
+            <div className="grid gap-3 sm:grid-cols-2">
               {[
                 "SOC-ready audit trails and approvals.",
                 "Multi-tenant data isolation with Supabase RLS.",
                 "Real-time dashboards with exports and alerts.",
                 "Automated exception alerts and variance detection."
               ].map((item) => (
-                <Stack key={item} direction="row" spacing={1.5} alignItems="flex-start">
-                  <Box
-                    sx={{
-                      width: 10,
-                      height: 10,
-                      borderRadius: "50%",
-                      backgroundColor: "#10b981",
-                      marginTop: "6px"
-                    }}
-                  />
-                  <Typography variant="body2" color="text.secondary">
-                    {item}
-                  </Typography>
-                </Stack>
+                <div key={item} className="flex items-start gap-3">
+                  <span className="mt-2 h-2.5 w-2.5 rounded-full bg-emerald-500" />
+                  <p className="text-sm text-slate-600">{item}</p>
+                </div>
               ))}
-            </Box>
-          </Stack>
-          <Card
-            elevation={0}
-            sx={{ borderRadius: 4, border: "1px solid #e2e8f0", backgroundColor: "#fff" }}
-          >
-            <CardContent>
-              <Stack spacing={3}>
-                <Box
-                  component="img"
-                  src="https://undraw.co/illustrations/undraw_data_processing_yrrv.svg"
-                  alt="Illustration of data processing"
-                  sx={{ width: "100%", maxHeight: 220, objectFit: "contain" }}
-                />
-                <Box>
-                  <Typography variant="h6" fontWeight={600}>
-                    Executive control center
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
-                    Monitor cash, inventory turns, and workforce utilization in one secure view.
-                  </Typography>
-                </Box>
-                <Box
-                  sx={{
-                    display: "grid",
-                    gap: 2,
-                    gridTemplateColumns: { sm: "repeat(2, minmax(0, 1fr))" }
-                  }}
-                >
-                  {metrics.map((metric) => (
-                    <Box
-                      key={metric.label}
-                      sx={{
-                        backgroundColor: "#f8fafc",
-                        borderRadius: 2,
-                        padding: 2
-                      }}
-                    >
-                      <Typography variant="caption" color="text.secondary" sx={{ letterSpacing: 1 }}>
-                        {metric.label}
-                      </Typography>
-                      <Typography variant="h6" fontWeight={600} sx={{ mt: 1 }}>
-                        {metric.value}
-                      </Typography>
-                    </Box>
-                  ))}
-                </Box>
-                <Button variant="outlined">Download platform overview</Button>
-              </Stack>
-            </CardContent>
+            </div>
+          </div>
+          <Card className="border border-slate-200 bg-white">
+            <div className="flex flex-col gap-6">
+              <img
+                src="https://undraw.co/illustrations/undraw_data_processing_yrrv.svg"
+                alt="Illustration of data processing"
+                className="h-56 w-full object-contain"
+              />
+              <div className="space-y-2">
+                <h2 className="text-lg font-semibold text-slate-900">Executive control center</h2>
+                <p className="text-sm text-slate-600">
+                  Monitor cash, inventory turns, and workforce utilization in one secure view.
+                </p>
+              </div>
+              <div className="grid gap-3 sm:grid-cols-2">
+                {metrics.map((metric) => (
+                  <div key={metric.label} className="rounded-lg bg-slate-50 p-3">
+                    <p className="text-[0.7rem] uppercase tracking-[0.15em] text-slate-500">
+                      {metric.label}
+                    </p>
+                    <p className="mt-2 text-lg font-semibold text-slate-900">
+                      {metric.value}
+                    </p>
+                  </div>
+                ))}
+              </div>
+              <Button variant="secondary">Download platform overview</Button>
+            </div>
           </Card>
-        </Box>
+        </section>
 
-        <Box sx={{ mt: { xs: 8, md: 12 }, display: "grid", gap: 3, gridTemplateColumns: { lg: "repeat(3, minmax(0, 1fr))" } }}>
+        <section className="grid gap-4 lg:grid-cols-3">
           {highlights.map((item) => (
-            <Card key={item.title} elevation={0} sx={{ borderRadius: 3, border: "1px solid #e2e8f0" }}>
-              <CardContent>
-                <Stack spacing={2}>
-                  <Typography variant="h6" fontWeight={600}>
-                    {item.title}
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    {item.description}
-                  </Typography>
-                  {item.href ? (
-                    <Button component={Link} href={item.href} variant="text">
-                      Explore module
-                    </Button>
-                  ) : (
-                    <Button variant="text" disabled>
-                      Coming soon
-                    </Button>
-                  )}
-                </Stack>
-              </CardContent>
+            <Card key={item.title} className="border border-slate-200 bg-white">
+              <div className="flex h-full flex-col gap-4">
+                <div className="space-y-2">
+                  <h3 className="text-lg font-semibold text-slate-900">{item.title}</h3>
+                  <p className="text-sm text-slate-600">{item.description}</p>
+                </div>
+                {item.href ? (
+                  <Link className={linkButton("ghost")} href={item.href}>
+                    Explore module
+                  </Link>
+                ) : (
+                  <span className="inline-flex w-fit items-center rounded-md bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-500">
+                    Coming soon
+                  </span>
+                )}
+              </div>
             </Card>
           ))}
-        </Box>
+        </section>
 
-        <Box
-          sx={{
-            mt: { xs: 8, md: 12 },
-            display: "grid",
-            gap: 6,
-            gridTemplateColumns: { lg: "1.1fr 0.9fr" }
-          }}
-        >
-          <Stack spacing={3}>
-            <Typography variant="overline" color="primary" sx={{ letterSpacing: 2 }}>
+        <section className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
+          <div className="flex flex-col gap-5">
+            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-600">
               Automated workflows
-            </Typography>
-            <Typography variant="h4" fontWeight={600} color="text.primary">
-              Replace manual handoffs with intelligent process automation.
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              Build workflows that match your approval policies, integrate with your tools, and
-              surface exceptions before they impact the business.
-            </Typography>
-            <Box
-              sx={{
-                display: "grid",
-                gap: 2,
-                gridTemplateColumns: { sm: "repeat(2, minmax(0, 1fr))" }
-              }}
-            >
+            </span>
+            <div className="space-y-3">
+              <h2 className="text-3xl font-semibold text-slate-900">
+                Replace manual handoffs with intelligent process automation.
+              </h2>
+              <p className="text-sm text-slate-600">
+                Build workflows that match your approval policies, integrate with your tools, and
+                surface exceptions before they impact the business.
+              </p>
+            </div>
+            <div className="grid gap-3 sm:grid-cols-2">
               {workflows.map((workflow) => (
-                <Card key={workflow.title} elevation={0} sx={{ backgroundColor: "#f8fafc", borderRadius: 3 }}>
-                  <CardContent>
-                    <Typography variant="subtitle1" fontWeight={600}>
+                <Card key={workflow.title} className="border-0 bg-slate-50 shadow-none">
+                  <div className="space-y-2">
+                    <h3 className="text-sm font-semibold text-slate-900">
                       {workflow.title}
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
-                      {workflow.description}
-                    </Typography>
-                  </CardContent>
+                    </h3>
+                    <p className="text-sm text-slate-600">{workflow.description}</p>
+                  </div>
                 </Card>
               ))}
-            </Box>
-          </Stack>
-          <Card
-            elevation={0}
-            sx={{
-              borderRadius: 4,
-              border: "1px solid #e2e8f0",
-              backgroundColor: "#fff"
-            }}
-          >
-            <CardContent>
-              <Stack spacing={3}>
-                <Box
-                  component="img"
-                  src="https://undraw.co/illustrations/undraw_team_collaboration_re_ow29.svg"
-                  alt="Illustration of teams collaborating"
-                  sx={{ width: "100%", maxHeight: 220, objectFit: "contain" }}
-                />
-                <Typography variant="h6" fontWeight={600}>
-                  Integrated analytics
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
+            </div>
+          </div>
+          <Card className="border border-slate-200 bg-white">
+            <div className="flex flex-col gap-6">
+              <img
+                src="https://undraw.co/illustrations/undraw_team_collaboration_re_ow29.svg"
+                alt="Illustration of teams collaborating"
+                className="h-56 w-full object-contain"
+              />
+              <div className="space-y-2">
+                <h3 className="text-lg font-semibold text-slate-900">Integrated analytics</h3>
+                <p className="text-sm text-slate-600">
                   Dashboards update in real time with predictive forecasts, variance commentary,
                   and automated executive summaries.
-                </Typography>
-                <Stack spacing={1.5}>
-                  {[
-                    { label: "Cash runway", value: "14.6 months" },
-                    { label: "Inventory at risk", value: "2.1%" },
-                    { label: "Payroll forecast variance", value: "-0.8%" }
-                  ].map((item) => (
-                    <Box
-                      key={item.label}
-                      sx={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        alignItems: "center",
-                        backgroundColor: "#f8fafc",
-                        borderRadius: 2,
-                        padding: 1.5
-                      }}
-                    >
-                      <Typography variant="body2" color="text.secondary">
-                        {item.label}
-                      </Typography>
-                      <Typography variant="subtitle2" fontWeight={600}>
-                        {item.value}
-                      </Typography>
-                    </Box>
-                  ))}
-                </Stack>
-                <Button component={Link} href="/dashboard" variant="contained">
-                  View live dashboards
-                </Button>
-              </Stack>
-            </CardContent>
+                </p>
+              </div>
+              <div className="space-y-2">
+                {[
+                  { label: "Cash runway", value: "14.6 months" },
+                  { label: "Inventory at risk", value: "2.1%" },
+                  { label: "Payroll forecast variance", value: "-0.8%" }
+                ].map((item) => (
+                  <div
+                    key={item.label}
+                    className="flex items-center justify-between rounded-lg bg-slate-50 px-3 py-2"
+                  >
+                    <span className="text-sm text-slate-600">{item.label}</span>
+                    <span className="text-sm font-semibold text-slate-900">{item.value}</span>
+                  </div>
+                ))}
+              </div>
+              <Link className={linkButton("primary")} href="/dashboard">
+                View live dashboards
+              </Link>
+            </div>
           </Card>
-        </Box>
+        </section>
 
-        <Box sx={{ mt: { xs: 8, md: 12 } }}>
-          <Stack
-            direction={{ xs: "column", md: "row" }}
-            spacing={3}
-            alignItems={{ md: "center" }}
-            justifyContent="space-between"
-          >
-            <Box>
-              <Typography variant="overline" color="primary" sx={{ letterSpacing: 2 }}>
+        <section className="space-y-6">
+          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+            <div className="space-y-2">
+              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-600">
                 Connected ecosystem
-              </Typography>
-              <Typography variant="h4" fontWeight={600} color="text.primary">
+              </span>
+              <h2 className="text-3xl font-semibold text-slate-900">
                 Integrate every tool your teams already love.
-              </Typography>
-            </Box>
-            <Button component={Link} href="/contact" variant="outlined">
+              </h2>
+            </div>
+            <Link className={linkButton("secondary")} href="/contact">
               Talk to integrations
-            </Button>
-          </Stack>
-          <Box
-            sx={{
-              mt: 4,
-              display: "grid",
-              gap: 2,
-              gridTemplateColumns: { sm: "repeat(2, minmax(0, 1fr))", lg: "repeat(3, minmax(0, 1fr))" }
-            }}
-          >
+            </Link>
+          </div>
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {integrations.map((integration) => (
-              <Card key={integration} elevation={0} sx={{ borderRadius: 3, border: "1px solid #e2e8f0" }}>
-                <CardContent>
-                  <Typography variant="body2" color="text.secondary">
-                    {integration}
-                  </Typography>
-                </CardContent>
+              <Card key={integration} className="border border-slate-200 bg-white">
+                <p className="text-sm text-slate-600">{integration}</p>
               </Card>
             ))}
-          </Box>
-        </Box>
+          </div>
+        </section>
 
       <section className="mt-16">
         <div className="flex flex-wrap items-center justify-between gap-4">
@@ -524,43 +406,29 @@ export default function LandingPage() {
         </div>
       </section>
 
-        <Box sx={{ mt: { xs: 8, md: 12 } }}>
-          <Card
-            elevation={0}
-            sx={{
-              borderRadius: 4,
-              border: "1px solid rgba(37, 99, 235, 0.2)",
-              backgroundColor: "rgba(37, 99, 235, 0.08)"
-            }}
-          >
-            <CardContent>
-              <Stack
-                direction={{ xs: "column", md: "row" }}
-                spacing={3}
-                alignItems={{ md: "center" }}
-                justifyContent="space-between"
-              >
-                <Box>
-                  <Typography variant="h5" fontWeight={600}>
-                    Ready to automate your ERP operations?
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
-                    Launch in weeks with dedicated onboarding, data migration, and training.
-                  </Typography>
-                </Box>
-                <Stack direction={{ xs: "column", sm: "row" }} spacing={2}>
-                  <Button component={Link} href="/sign-up" variant="contained">
-                    Start free
-                  </Button>
-                  <Button component={Link} href="/contact" variant="outlined">
-                    Schedule consult
-                  </Button>
-                </Stack>
-              </Stack>
-            </CardContent>
+        <section>
+          <Card className="border border-blue-200/60 bg-blue-50/70">
+            <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+              <div className="space-y-2">
+                <h2 className="text-2xl font-semibold text-slate-900">
+                  Ready to automate your ERP operations?
+                </h2>
+                <p className="text-sm text-slate-600">
+                  Launch in weeks with dedicated onboarding, data migration, and training.
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-3">
+                <Link className={linkButton("primary")} href="/sign-up">
+                  Start free
+                </Link>
+                <Link className={linkButton("secondary")} href="/contact">
+                  Schedule consult
+                </Link>
+              </div>
+            </div>
           </Card>
-        </Box>
-      </Container>
-    </Box>
+        </section>
+      </div>
+    </main>
   );
 }
