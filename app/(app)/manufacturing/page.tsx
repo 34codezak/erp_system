@@ -69,7 +69,7 @@ export default function ManufacturingPage() {
                   <span className="rounded-full bg-emerald-50 px-3 py-1 text-xs text-emerald-700">
                     {item.status}
                   </span>
-                  <Button type="button" variant="ghost" size="sm">
+                  <Button type="button" variant="ghost">
                     Update
                   </Button>
                 </div>
@@ -97,7 +97,7 @@ export default function ManufacturingPage() {
                 </div>
                 <div className="flex items-center gap-3">
                   <span className="text-xs text-slate-500">{item.date}</span>
-                  <Button type="button" variant="ghost" size="sm">
+                  <Button type="button" variant="ghost">
                     Update
                   </Button>
                 </div>
@@ -124,7 +124,7 @@ export default function ManufacturingPage() {
               <p className="text-xs text-slate-500">{item.shift} shift</p>
               <p className="mt-2 text-xs text-slate-500">{item.status}</p>
               <div className="mt-3">
-                <Button type="button" variant="ghost" size="sm">
+                <Button type="button" variant="ghost">
                   Update
                 </Button>
               </div>

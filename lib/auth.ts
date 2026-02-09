@@ -48,7 +48,7 @@ export async function signInWithEmail({ email, password }: SignInPayload): Promi
   });
 
   return {
-    user: data.user ?? null,
+    user: data?.user ?? null,
     sessionToken: data.session?.access_token ?? null,
     error: formatAuthError(error)
   };
@@ -77,7 +77,7 @@ export async function signUpWithEmail({
   });
 
   return {
-    user: data.user ?? null,
+    user: data?.user ?? null,
     sessionToken: data.session?.access_token ?? null,
     error: formatAuthError(error)
   };
@@ -106,12 +106,12 @@ export async function requestPasswordReset(email: string, redirectTo?: string): 
     return { user: null, error: clientError };
   }
 
-  const { data, error } = await client.auth.resetPasswordForEmail(email, {
+  const { error } = await client.auth.resetPasswordForEmail(email, {
     redirectTo
   });
 
   return {
-    user: data.user ?? null,
+    user: null,
     error: formatAuthError(error)
   };
 }
@@ -139,7 +139,7 @@ export async function getCurrentUser(): Promise<AuthResponse> {
   const { data, error } = await client.auth.getUser();
 
   return {
-    user: data.user ?? null,
+    user: data?.user ?? null,
     error: formatAuthError(error)
   };
 }

@@ -1,3 +1,4 @@
+import type { Route } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -26,7 +27,7 @@ const highlights = [
     description: "Forecast demand, optimize procurement, and protect inventory margins.",
     href: "/modules/supply-chain"
   }
-];
+] satisfies Array<{ title: string; description: string; href?: Route }>;
 
 const metrics = [
   { label: "Average close time", value: "4.2 days" },
@@ -203,7 +204,9 @@ export default function LandingPage() {
                   </div>
                 ))}
               </div>
-              <Button variant="secondary">Download platform overview</Button>
+              <Button variant="outlined" color="secondary">
+                Download platform overview
+              </Button>
             </div>
           </Card>
         </section>
@@ -368,7 +371,9 @@ export default function LandingPage() {
             </p>
           </div>
           <Link href="/contact">
-            <Button variant="secondary">Explore themes</Button>
+            <Button variant="outlined" color="secondary">
+              Explore themes
+            </Button>
           </Link>
         </div>
         <div className="mt-8 grid gap-6 lg:grid-cols-2">
@@ -452,7 +457,9 @@ export default function LandingPage() {
             </h2>
           </div>
           <Link href="/contact">
-            <Button variant="secondary">Talk to integrations</Button>
+            <Button variant="outlined" color="secondary">
+              Talk to integrations
+            </Button>
           </Link>
         </div>
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
