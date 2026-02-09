@@ -1,5 +1,8 @@
+"use client";
+
 import { RecordEntryCard } from "@/components/record-entry-card";
 import { Button } from "@/components/ui/button";
+import { useMemo, useState } from "react";
 
 const productionStats = [
   { label: "Active work orders", value: "38" },
@@ -27,6 +30,37 @@ const schedule = [
 ];
 
 export default function ManufacturingPage() {
+  const [activeEntry, setActiveEntry] = useState<{
+    title: string;
+    subtitle: string;
+    section: string;
+  } | null>(null);
+
+  const modalFields = useMemo(() => {
+    if (!activeEntry) {
+      return [];
+    }
+    if (activeEntry.section === "Bill of materials") {
+      return [
+        { label: "Product name", value: activeEntry.title },
+        { label: "Components", value: activeEntry.subtitle },
+        { label: "Approval status", value: "Approved" }
+      ];
+    }
+    if (activeEntry.section === "MRP recommendations") {
+      return [
+        { label: "Material", value: activeEntry.title },
+        { label: "Action", value: activeEntry.subtitle },
+        { label: "Needed by", value: "Sep 4" }
+      ];
+    }
+    return [
+      { label: "Line", value: activeEntry.title },
+      { label: "Shift", value: activeEntry.subtitle },
+      { label: "Status", value: "Running" }
+    ];
+  }, [activeEntry]);
+
   return (
     <div className="space-y-6">
       <div>
@@ -69,7 +103,18 @@ export default function ManufacturingPage() {
                   <span className="rounded-full bg-emerald-50 px-3 py-1 text-xs text-emerald-700">
                     {item.status}
                   </span>
-                  <Button type="button" variant="ghost">
+                  <Button
+                    type="button"
+                    variant="ghost"
+                    size="sm"
+                    onClick={() =>
+                      setActiveEntry({
+                        title: item.product,
+                        subtitle: `${item.components} components`,
+                        section: "Bill of materials"
+                      })
+                    }
+                  >
                     Update
                   </Button>
                 </div>
@@ -97,7 +142,18 @@ export default function ManufacturingPage() {
                 </div>
                 <div className="flex items-center gap-3">
                   <span className="text-xs text-slate-500">{item.date}</span>
-                  <Button type="button" variant="ghost">
+                  <Button
+                    type="button"
+                    variant="ghost"
+                    size="sm"
+                    onClick={() =>
+                      setActiveEntry({
+                        title: item.material,
+                        subtitle: item.action,
+                        section: "MRP recommendations"
+                      })
+                    }
+                  >
                     Update
                   </Button>
                 </div>
@@ -124,7 +180,18 @@ export default function ManufacturingPage() {
               <p className="text-xs text-slate-500">{item.shift} shift</p>
               <p className="mt-2 text-xs text-slate-500">{item.status}</p>
               <div className="mt-3">
-                <Button type="button" variant="ghost">
+                <Button
+                  type="button"
+                  variant="ghost"
+                  size="sm"
+                  onClick={() =>
+                    setActiveEntry({
+                      title: item.line,
+                      subtitle: `${item.shift} shift`,
+                      section: "Production scheduling"
+                    })
+                  }
+                >
                   Update
                 </Button>
               </div>
@@ -132,6 +199,58 @@ export default function ManufacturingPage() {
           ))}
         </div>
       </RecordEntryCard>
+      {activeEntry ? (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/40 px-4 py-6">
+          <div className="w-full max-w-xl rounded-2xl bg-white p-6 shadow-xl">
+            <div className="flex flex-col gap-1">
+              <p className="text-xs uppercase tracking-wide text-slate-400">
+                {activeEntry.section}
+              </p>
+              <h3 className="text-lg font-semibold text-slate-900">Edit entry</h3>
+              <p className="text-sm text-slate-500">
+                Update the details for {activeEntry.title}.
+              </p>
+            </div>
+            <div className="mt-5 space-y-4">
+              {modalFields.map((field) => (
+                <label key={field.label} className="block text-sm text-slate-600">
+                  <span className="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-400">
+                    {field.label}
+                  </span>
+                  <input
+                    type="text"
+                    defaultValue={field.value}
+                    className="w-full rounded-lg border border-slate-200 px-3 py-2 text-sm text-slate-900 shadow-sm focus:border-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-200"
+                  />
+                </label>
+              ))}
+              <label className="block text-sm text-slate-600">
+                <span className="mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-400">
+                  Notes
+                </span>
+                <textarea
+                  rows={3}
+                  placeholder="Add a note for this update..."
+                  className="w-full resize-none rounded-lg border border-slate-200 px-3 py-2 text-sm text-slate-900 shadow-sm focus:border-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-200"
+                />
+              </label>
+            </div>
+            <div className="mt-6 flex flex-wrap items-center justify-end gap-3">
+              <Button
+                type="button"
+                variant="ghost"
+                size="sm"
+                onClick={() => setActiveEntry(null)}
+              >
+                Cancel
+              </Button>
+              <Button type="button" size="sm" onClick={() => setActiveEntry(null)}>
+                Save changes
+              </Button>
+            </div>
+          </div>
+        </div>
+      ) : null}
     </div>
   );
 }
