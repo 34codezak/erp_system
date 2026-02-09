@@ -29,7 +29,23 @@ export default function SignUpPage() {
             />
           </label>
           <label className="block text-sm">
+            Phone number
+            <input
+              type="tel"
+              className="mt-1 w-full rounded-md border border-slate-200 px-3 py-2"
+              placeholder="+1 (555) 000-1234"
+            />
+          </label>
+          <label className="block text-sm">
             Password
+            <input
+              type="password"
+              className="mt-1 w-full rounded-md border border-slate-200 px-3 py-2"
+              placeholder="••••••••"
+            />
+          </label>
+          <label className="block text-sm">
+            Confirm password
             <input
               type="password"
               className="mt-1 w-full rounded-md border border-slate-200 px-3 py-2"
