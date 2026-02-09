@@ -31,9 +31,9 @@ export default function AboutPage() {
     <main className="mx-auto max-w-6xl px-6 py-16">
       <h1 className="text-3xl font-semibold">About Atlas ERP</h1>
       <p className="mt-4 max-w-3xl text-slate-600">
-        Atlas ERP is designed for modern organizations that need a trusted, unified
-        operating system. With configurable workflows and auditability baked in, teams can
-        scale without sacrificing compliance.
+        Atlas ERP is designed for modern organizations that need a trusted, unified operating
+        system. With configurable workflows and auditability baked in, teams can chart growth
+        without sacrificing compliance.
       </p>
       <div className="mt-10 grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
         <div className="grid gap-4">
@@ -47,7 +47,7 @@ export default function AboutPage() {
           <h2 className="text-xl font-semibold">Implementation approach</h2>
           <p className="text-sm text-slate-600">
             Our consultants collaborate with your finance, operations, and IT leaders to
-            deliver a clean, automated rollout with measurable ROI.
+            deliver a clean, automated rollout with measurable ROI and clear wayfinding.
           </p>
           <div className="space-y-3 text-sm text-slate-600">
             <div className="flex items-center justify-between rounded-md bg-white px-4 py-3">

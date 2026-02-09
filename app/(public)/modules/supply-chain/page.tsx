@@ -37,11 +37,11 @@ export default function SupplyChainPage() {
             Supply chain
           </p>
           <h1 className="mt-4 text-4xl font-semibold text-slate-900 lg:text-5xl">
-            Build a resilient supply chain with real-time planning and automation.
+            Build a resilient supply chain with real-time planning and steady navigation.
           </h1>
           <p className="mt-5 text-base text-slate-600">
             Atlas ERP unifies procurement, inventory, and demand planning so operations teams can
-            keep inventory lean, protect margins, and respond to disruptions faster.
+            chart inventory levels, protect margins, and respond to disruptions faster.
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
             <Link href="/contact">
@@ -64,9 +64,9 @@ export default function SupplyChainPage() {
           </div>
         </div>
         <Card className="space-y-4 border border-slate-200 bg-white">
-          <h2 className="text-xl font-semibold text-slate-900">Supply chain control</h2>
+          <h2 className="text-xl font-semibold text-slate-900">Supply chain compass</h2>
           <p className="text-sm text-slate-600">
-            Monitor inventory risk, vendor performance, and margin exposure from one workspace.
+            Navigate inventory risk, vendor performance, and margin exposure from one workspace.
           </p>
           <div className="space-y-3 text-sm text-slate-600">
             <div className="flex items-center justify-between rounded-md bg-slate-50 px-4 py-3">
@@ -99,7 +99,7 @@ export default function SupplyChainPage() {
         <Card className="flex flex-col items-start justify-between gap-6 border border-brand/20 bg-brand/5 p-8 md:flex-row md:items-center">
           <div>
             <h2 className="text-2xl font-semibold text-slate-900">
-              Keep inventory healthy and margins protected.
+              Keep inventory healthy and margins on course.
             </h2>
             <p className="mt-2 text-sm text-slate-600">
               Roll out demand planning, procurement approvals, and real-time inventory tracking in

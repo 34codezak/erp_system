@@ -129,15 +129,15 @@ export default function LandingPage() {
         <section className="grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
           <div className="flex flex-col gap-6">
             <span className="w-fit rounded-full border border-emerald-200 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-emerald-700">
-              Production-ready ERP
+              Atlas-ready ERP
             </span>
             <div className="space-y-4">
               <h1 className="text-4xl font-semibold text-slate-900 md:text-5xl">
-                Run every department on a single automated ERP platform.
+                Chart every department on a single automated ERP atlas.
               </h1>
               <p className="text-base text-slate-600">
                 Atlas ERP unifies finance, supply chain, HR, and operations with intelligent
-                workflows, secure approvals, and executive analytics that keep leadership aligned.
+                workflows, secure approvals, and north-star analytics that keep leadership aligned.
               </p>
             </div>
             <div className="flex flex-wrap gap-3">
@@ -153,9 +153,9 @@ export default function LandingPage() {
             </div>
             <div className="grid gap-3 sm:grid-cols-2">
               {[
-                "SOC-ready audit trails and approvals.",
+                "Compass-ready audit trails and approvals.",
                 "Multi-tenant data isolation with Supabase RLS.",
-                "Real-time dashboards with exports and alerts.",
+                "Real-time dashboards with exports and horizon alerts.",
                 "Automated exception alerts and variance detection."
               ].map((item) => (
                 <div key={item} className="flex items-start gap-3">
@@ -178,9 +178,9 @@ export default function LandingPage() {
                 className="h-56 w-full object-contain"
               />
               <div className="space-y-2">
-                <h2 className="text-lg font-semibold text-slate-900">Executive control center</h2>
+                <h2 className="text-lg font-semibold text-slate-900">Executive command atlas</h2>
                 <p className="text-sm text-slate-600">
-                  Monitor cash, inventory turns, and workforce utilization in one secure view.
+                  Navigate cash, inventory turns, and workforce utilization in one secure view.
                 </p>
               </div>
               <div className="grid gap-3 sm:grid-cols-2">
@@ -232,7 +232,7 @@ export default function LandingPage() {
                 Interactive workspace
               </p>
               <h2 className="text-3xl font-semibold text-slate-900">
-                Keep teams moving with responsive, interactive operations.
+                Keep teams on course with responsive, interactive operations.
               </h2>
               <p className="text-sm text-slate-600">
                 Surface live workflows, search instantly, and guide every decision with
@@ -261,7 +261,7 @@ export default function LandingPage() {
             </span>
             <div className="space-y-3">
               <h2 className="text-3xl font-semibold text-slate-900">
-                Replace manual handoffs with intelligent process automation.
+                Replace manual handoffs with intelligent, route-aware process automation.
               </h2>
               <p className="text-sm text-slate-600">
                 Build workflows that match your approval policies, integrate with your tools, and
@@ -329,7 +329,7 @@ export default function LandingPage() {
                 Connected ecosystem
               </span>
               <h2 className="text-3xl font-semibold text-slate-900">
-                Integrate every tool your teams already love.
+                Integrate every tool already in your orbit.
               </h2>
             </div>
             <Link className={linkButton("secondary")} href="/contact">
@@ -352,7 +352,7 @@ export default function LandingPage() {
               Theme variations
             </p>
             <h2 className="text-3xl font-semibold text-slate-900">
-              Match your ERP workspace to every team and environment.
+              Match your ERP workspace to every team and environment on the map.
             </h2>
             <p className="text-sm text-slate-600">
               Switch between light and dark modes to align with brand guidelines and keep
@@ -440,7 +440,7 @@ export default function LandingPage() {
               Connected ecosystem
             </p>
             <h2 className="text-3xl font-semibold text-slate-900">
-              Integrate every tool your teams already love.
+              Integrate every tool already in your orbit.
             </h2>
           </div>
           <Link href="/contact">
@@ -462,7 +462,7 @@ export default function LandingPage() {
             Trusted by operators
           </p>
           <h2 className="text-3xl font-semibold text-slate-900">
-            Teams run smarter with Atlas ERP.
+            Teams steer smarter with Atlas ERP.
           </h2>
         </div>
         <div className="mt-8 grid gap-6 lg:grid-cols-3">
@@ -487,7 +487,7 @@ export default function LandingPage() {
             <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
               <div className="space-y-2">
                 <h2 className="text-2xl font-semibold text-slate-900">
-                  Ready to automate your ERP operations?
+                  Ready to chart your ERP operations?
                 </h2>
                 <p className="text-sm text-slate-600">
                   Launch in weeks with dedicated onboarding, data migration, and training.
