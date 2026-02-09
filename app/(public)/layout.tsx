@@ -7,17 +7,29 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
     <div className="min-h-screen bg-slate-50">
       <header className="border-b border-slate-200 bg-white">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-          <Link href="/" className="text-lg font-semibold text-slate-900">
+          <Link
+            href="/"
+            className="text-lg font-semibold text-slate-900 transition-colors duration-200 ease-out hover:text-slate-700"
+          >
             Atlas ERP
           </Link>
           <nav className="flex flex-wrap items-center gap-4 text-sm text-slate-600">
-            <Link href="/pricing" className="hover:text-slate-900">
+            <Link
+              href="/pricing"
+              className="transition-colors duration-200 ease-out hover:text-slate-900"
+            >
               Pricing
             </Link>
-            <Link href="/about" className="hover:text-slate-900">
+            <Link
+              href="/about"
+              className="transition-colors duration-200 ease-out hover:text-slate-900"
+            >
               About
             </Link>
-            <Link href="/contact" className="hover:text-slate-900">
+            <Link
+              href="/contact"
+              className="transition-colors duration-200 ease-out hover:text-slate-900"
+            >
               Contact
             </Link>
             <Link href="/sign-in">

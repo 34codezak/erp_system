@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import { Button, Card } from "@mui/material";
@@ -103,7 +104,7 @@ const testimonials = [
 ];
 
 const buttonBaseClasses =
-  "inline-flex items-center justify-center gap-2 rounded-md px-4 py-2 text-sm font-medium transition";
+  "inline-flex items-center justify-center gap-2 rounded-md px-4 py-2 text-sm font-medium transition-colors duration-200 ease-out motion-reduce:transition-none";
 
 const linkButtonClasses = {
   primary: "bg-brand text-white hover:bg-brand/90",
@@ -172,10 +173,14 @@ export default function LandingPage() {
             )}
           >
             <div className="flex flex-col gap-6">
-              <img
+              <Image
                 src="https://undraw.co/illustrations/undraw_data_processing_yrrv.svg"
                 alt="Illustration of data processing"
                 className="h-56 w-full object-contain"
+                width={640}
+                height={360}
+                priority
+                sizes="(min-width: 1024px) 420px, 100vw"
               />
               <div className="space-y-2">
                 <h2 className="text-lg font-semibold text-slate-900">Executive command atlas</h2>
@@ -288,10 +293,13 @@ export default function LandingPage() {
             )}
           >
             <div className="flex flex-col gap-6">
-              <img
+              <Image
                 src="https://undraw.co/illustrations/undraw_team_collaboration_re_ow29.svg"
                 alt="Illustration of teams collaborating"
                 className="h-56 w-full object-contain"
+                width={640}
+                height={360}
+                sizes="(min-width: 1024px) 420px, 100vw"
               />
               <div className="space-y-2">
                 <h3 className="text-lg font-semibold text-slate-900">Integrated analytics</h3>
