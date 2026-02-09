@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { SocialAuthButtons } from "@/components/auth/social-auth-buttons";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 
@@ -30,6 +31,7 @@ export default function SignInPage() {
           </label>
           <Button className="w-full">Sign in</Button>
         </form>
+        <SocialAuthButtons intent="sign-in" />
         <div className="flex items-center justify-between text-xs text-slate-500">
           <Link href="/reset-password">Forgot password?</Link>
           <Link href="/sign-up">Create account</Link>
